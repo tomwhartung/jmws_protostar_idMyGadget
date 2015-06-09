@@ -17,35 +17,38 @@ define( 'TERA_WURFL', 'tera_wurfl' );
 
 //
 // $gadget_detector = DETECT_MOBILE_BROWSERS;
-// $gadget_detector = MOBILE_DETECT;
-$gadget_detector = TERA_WURFL;
+$gadget_detector = MOBILE_DETECT;
+// $gadget_detector = TERA_WURFL;
 
 $idMyGadget = null;
 $debugging = FALSE;
 $allowOverridesInUrl = TRUE;
+$cwd = getcwd();
+$dir_to_add = $cwd . '/templates/jmws_protostar_idmygadget/jmws_idMyGadget_for_joomla';
+set_include_path( get_include_path() . PATH_SEPARATOR . $dir_to_add );
 
 if ( $gadget_detector === DETECT_MOBILE_BROWSERS )
 {
-	require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/detect_mobile_browsers/php/detectmobilebrowser.php';     // sets $usingMobilePhone global variable
-	require_once 'jmws_idMyGadget_for_joomla/php/IdMyGadgetDetectMobileBrowsers.php';
+	require_once 'gadget_detectors/detect_mobile_browsers/php/detectmobilebrowser.php';     // sets $usingMobilePhone global variable
+	require_once 'php/IdMyGadgetDetectMobileBrowsers.php';
 	$idMyGadget = new IdMyGadgetDetectMobileBrowsers( $debugging, $allowOverridesInUrl );
 }
 else if ( $gadget_detector === MOBILE_DETECT )
 {
-	require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/mobile_detect/Mobile-Detect/Mobile_Detect.php' ;
-	require_once 'jmws_idMyGadget_for_joomla/php/IdMyGadgetMobileDetect.php';
+	require_once 'gadget_detectors/mobile_detect/Mobile-Detect/Mobile_Detect.php' ;
+	require_once 'php/IdMyGadgetMobileDetect.php';
 	$idMyGadget = new IdMyGadgetMobileDetect( $debugging, $allowOverridesInUrl );
 }
 else if ( $gadget_detector === TERA_WURFL )
 {
-	require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/tera_wurfl/Tera-Wurfl/wurfl-dbapi/TeraWurfl.php';
-	require_once 'jmws_idMyGadget_for_joomla/php/IdMyGadgetTeraWurfl.php';
+	require_once 'gadget_detectors/tera_wurfl/Tera-Wurfl/wurfl-dbapi/TeraWurfl.php';
+	require_once 'php/IdMyGadgetTeraWurfl.php';
 	$idMyGadget = new IdMyGadgetTeraWurfl( $debugging, $allowOverridesInUrl );
 }
 
 if ( $idMyGadget !== null )
 {
-	require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/all_detectors/getGadgetString.php';
+	require_once 'gadget_detectors/all_detectors/getGadgetString.php';
 	$deviceData = $idMyGadget->getDeviceData();
 	$gadgetString = getGadgetString( $deviceData );
 }
@@ -174,6 +177,8 @@ else
 	<div class="body">
 		<p>$gadget_detector = <?php echo $gadget_detector ?></p>
 		<p>$gadgetString = <?php echo $gadgetString ?></p>
+		<p>$cwd = <?php echo $cwd ?></p>
+		<p>get_include_path() = <?php echo get_include_path(); ?></p>
 		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner">
