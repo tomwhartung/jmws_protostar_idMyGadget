@@ -135,8 +135,8 @@ else
 
 	<!-- Body -->
 	<div class="body">
-		<p>$detector->gadgetDetector = <?php echo $detector->gadgetDetector ?></p>
-		<p>$detector->gadgetString = <?php echo $detector->gadgetString ?></p>
+		<p>$detector->getGadgetDetector() = <?php echo $detector->getGadgetDetector() ?></p>
+		<p>$detector->getGadgetString() = <?php echo $detector->getGadgetString() ?></p>
 		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner">
