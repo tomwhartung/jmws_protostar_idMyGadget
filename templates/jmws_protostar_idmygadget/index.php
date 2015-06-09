@@ -15,12 +15,9 @@ define( 'DETECT_MOBILE_BROWSERS', 'detect_mobile_browsers' );
 define( 'MOBILE_DETECT',  'mobile_detect' );
 define( 'TERA_WURFL', 'tera_wurfl' );
 
-require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/detect_mobile_browsers/php/detectmobilebrowser.php';
-require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/all_detectors/getGadgetString.php';
 //
-// $gadget_detector = 'nothin yet be patient';
-$gadget_detector = DETECT_MOBILE_BROWSERS;
-// $gadget_detector = MOBILE_DETECT;
+// $gadget_detector = DETECT_MOBILE_BROWSERS;
+$gadget_detector = MOBILE_DETECT;
 // $gadget_detector = TERA_WURFL;
 
 $idMyGadget = null;
@@ -35,7 +32,7 @@ if ( $gadget_detector === DETECT_MOBILE_BROWSERS )
 }
 else if ( $gadget_detector === MOBILE_DETECT )
 {
-	require_once 'jmws_idMyGadget_for_joomla/mobile_detect/Mobile-Detect/Mobile_Detect.php' ;
+	require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/mobile_detect/Mobile-Detect/Mobile_Detect.php' ;
 	require_once 'jmws_idMyGadget_for_joomla/php/IdMyGadgetMobileDetect.php';
 	$idMyGadget = new IdMyGadgetMobileDetect( $debugging, $allowOverridesInUrl );
 }
@@ -48,6 +45,7 @@ else if ( $gadget_detector === TERA_WURFL )
 
 if ( $idMyGadget !== null )
 {
+	require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/all_detectors/getGadgetString.php';
 	$deviceData = $idMyGadget->getDeviceData();
 	$gadgetString = getGadgetString( $deviceData );
 }
