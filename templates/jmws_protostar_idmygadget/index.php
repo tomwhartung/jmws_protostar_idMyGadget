@@ -8,7 +8,10 @@
  */
 
 defined('_JEXEC') or die;
-require_once 'jmws_idMyGadget_for_joomla/init.php';
+require_once 'jmws_idMyGadget_for_joomla/Detector.php';
+// $detector = new Detector( Detector::DETECT_MOBILE_BROWSERS );
+$detector = new Detector( Detector::MOBILE_DETECT );
+// $detector = new Detector( Detector::TERA_WURFL );
 
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
@@ -132,8 +135,8 @@ else
 
 	<!-- Body -->
 	<div class="body">
-		<p>$gadgetDetector = <?php echo $gadgetDetector ?></p>
-		<p>$gadgetString = <?php echo $gadgetString ?></p>
+		<p>$detector->gadgetDetector = <?php echo $detector->gadgetDetector ?></p>
+		<p>$detector->gadgetString = <?php echo $detector->gadgetString ?></p>
 		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner">
