@@ -16,9 +16,9 @@ define( 'MOBILE_DETECT',  'mobile_detect' );
 define( 'TERA_WURFL', 'tera_wurfl' );
 
 //
-// $gadget_detector = DETECT_MOBILE_BROWSERS;
-$gadget_detector = MOBILE_DETECT;
-// $gadget_detector = TERA_WURFL;
+// $gadgetDetector = DETECT_MOBILE_BROWSERS;
+$gadgetDetector = MOBILE_DETECT;
+// $gadgetDetector = TERA_WURFL;
 
 $idMyGadget = null;
 $debugging = FALSE;
@@ -27,19 +27,19 @@ $cwd = getcwd();
 $dir_to_add = $cwd . '/templates/jmws_protostar_idmygadget/jmws_idMyGadget_for_joomla';
 set_include_path( get_include_path() . PATH_SEPARATOR . $dir_to_add );
 
-if ( $gadget_detector === DETECT_MOBILE_BROWSERS )
+if ( $gadgetDetector === DETECT_MOBILE_BROWSERS )
 {
 	require_once 'gadget_detectors/detect_mobile_browsers/php/detectmobilebrowser.php';     // sets $usingMobilePhone global variable
 	require_once 'php/IdMyGadgetDetectMobileBrowsers.php';
 	$idMyGadget = new IdMyGadgetDetectMobileBrowsers( $debugging, $allowOverridesInUrl );
 }
-else if ( $gadget_detector === MOBILE_DETECT )
+else if ( $gadgetDetector === MOBILE_DETECT )
 {
 	require_once 'gadget_detectors/mobile_detect/Mobile-Detect/Mobile_Detect.php' ;
 	require_once 'php/IdMyGadgetMobileDetect.php';
 	$idMyGadget = new IdMyGadgetMobileDetect( $debugging, $allowOverridesInUrl );
 }
-else if ( $gadget_detector === TERA_WURFL )
+else if ( $gadgetDetector === TERA_WURFL )
 {
 	require_once 'gadget_detectors/tera_wurfl/Tera-Wurfl/wurfl-dbapi/TeraWurfl.php';
 	require_once 'php/IdMyGadgetTeraWurfl.php';
@@ -175,10 +175,8 @@ else
 
 	<!-- Body -->
 	<div class="body">
-		<p>$gadget_detector = <?php echo $gadget_detector ?></p>
+		<p>$gadgetDetector = <?php echo $gadgetDetector ?></p>
 		<p>$gadgetString = <?php echo $gadgetString ?></p>
-		<p>$cwd = <?php echo $cwd ?></p>
-		<p>get_include_path() = <?php echo get_include_path(); ?></p>
 		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner">
