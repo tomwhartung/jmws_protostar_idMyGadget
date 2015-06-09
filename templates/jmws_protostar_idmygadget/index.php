@@ -8,6 +8,49 @@
  */
 
 defined('_JEXEC') or die;
+//
+// idMyGadget device detection:
+//
+define( 'DETECT_MOBILE_BROWSERS', 'detect_mobile_browsers' );
+define( 'MOBILE_DETECT',  'mobile_detect' );
+define( 'TERA_WURFL', 'tera_wurfl' );
+
+require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/detect_mobile_browsers/php/detectmobilebrowser.php';
+require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/all_detectors/getGadgetString.php';
+//
+// $gadget_detector = 'nothin yet be patient';
+$gadget_detector = DETECT_MOBILE_BROWSERS;
+// $gadget_detector = MOBILE_DETECT;
+// $gadget_detector = TERA_WURFL;
+
+$idMyGadget = null;
+$debugging = FALSE;
+$allowOverridesInUrl = TRUE;
+
+if ( $gadget_detector === DETECT_MOBILE_BROWSERS )
+{
+	require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/detect_mobile_browsers/php/detectmobilebrowser.php';     // sets $usingMobilePhone global variable
+	require_once 'jmws_idMyGadget_for_joomla/php/IdMyGadgetDetectMobileBrowsers.php';
+	$idMyGadget = new IdMyGadgetDetectMobileBrowsers( $debugging, $allowOverridesInUrl );
+}
+else if ( $gadget_detector === MOBILE_DETECT )
+{
+	require_once 'jmws_idMyGadget_for_joomla/mobile_detect/Mobile-Detect/Mobile_Detect.php' ;
+	require_once 'jmws_idMyGadget_for_joomla/php/IdMyGadgetMobileDetect.php';
+	$idMyGadget = new IdMyGadgetMobileDetect( $debugging, $allowOverridesInUrl );
+}
+else if ( $gadget_detector === TERA_WURFL )
+{
+	require_once 'jmws_idMyGadget_for_joomla/tera_wurfl/Tera-Wurfl/wurfl-dbapi/TeraWurfl.php';
+	require_once 'jmws_idMyGadget_for_joomla/php/IdMyGadgetTeraWurfl.php';
+	$idMyGadget = new IdMyGadgetTeraWurfl( $debugging, $allowOverridesInUrl );
+}
+
+if ( $idMyGadget !== null )
+{
+	$deviceData = $idMyGadget->getDeviceData();
+	$gadgetString = getGadgetString( $deviceData );
+}
 
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
@@ -131,6 +174,8 @@ else
 
 	<!-- Body -->
 	<div class="body">
+		<p>$gadget_detector = <?php echo $gadget_detector ?></p>
+		<p>$gadgetString = <?php echo $gadgetString ?></p>
 		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner">
