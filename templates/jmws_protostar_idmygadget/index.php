@@ -17,8 +17,8 @@ define( 'TERA_WURFL', 'tera_wurfl' );
 
 //
 // $gadget_detector = DETECT_MOBILE_BROWSERS;
-$gadget_detector = MOBILE_DETECT;
-// $gadget_detector = TERA_WURFL;
+// $gadget_detector = MOBILE_DETECT;
+$gadget_detector = TERA_WURFL;
 
 $idMyGadget = null;
 $debugging = FALSE;
@@ -38,7 +38,7 @@ else if ( $gadget_detector === MOBILE_DETECT )
 }
 else if ( $gadget_detector === TERA_WURFL )
 {
-	require_once 'jmws_idMyGadget_for_joomla/tera_wurfl/Tera-Wurfl/wurfl-dbapi/TeraWurfl.php';
+	require_once 'jmws_idMyGadget_for_joomla/gadget_detectors/tera_wurfl/Tera-Wurfl/wurfl-dbapi/TeraWurfl.php';
 	require_once 'jmws_idMyGadget_for_joomla/php/IdMyGadgetTeraWurfl.php';
 	$idMyGadget = new IdMyGadgetTeraWurfl( $debugging, $allowOverridesInUrl );
 }
