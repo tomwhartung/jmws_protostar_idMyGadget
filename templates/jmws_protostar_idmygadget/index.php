@@ -9,10 +9,10 @@
 
 defined('_JEXEC') or die;
 
-require_once 'jmws_idMyGadget_for_joomla/Detector.php';
-$jmwsIdMyGadget = new Detector( 'detect_mobile_browsers' );
-// $jmwsIdMyGadget = new Detector( 'mobile_detect' );
-// $jmwsIdMyGadget = new Detector( 'tera_wurfl' );
+require_once 'jmws_idMyGadget_for_joomla/JmwsIdMyGadget.php';
+// $jmwsIdMyGadget = new JmwsIdMyGadget( 'detect_mobile_browsers' );
+// $jmwsIdMyGadget = new JmwsIdMyGadget( 'mobile_detect' );
+$jmwsIdMyGadget = new JmwsIdMyGadget( 'tera_wurfl' );
 
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
