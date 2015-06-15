@@ -164,18 +164,6 @@ else
 
 	<!-- Body -->
 	<div class="body">
-
-		<?php if ( ! $jmwsIdMyGadget->isInstalled() ) : ?>
-			<p>The <?php echo $jmwsIdMyGadget->getGadgetDetector() ?> detector is not installed.
-				For information about how to install idMyGadget detectors,
-				see the appropriate README.md file on github
-				<a href="<?php echo $jmwsIdMyGadget->getLinkToReadme(); ?>" target="_blank">here</a>.</p>
-			<?php
-				$application = JFactory::getApplication();
-				$application->enqueueMessage(JText::_('TPL_PROTOSTAR_DETECTOR_NOT_INSTALLED'), 'error');
-			?>
-		<?php endif; ?>
-
 			<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner">
@@ -238,9 +226,23 @@ else
 			<p>
 				&copy; <?php echo date('Y'); ?> <?php echo $sitename; ?>
 			</p>
-		<!-- --------------------------------------------------------------------------------- -->
-		<!-- Print out some values that might help with debugging our mobile-friendly template -->
-		<!-- --------------------------------------------------------------------------------- -->
+
+			<!-- ------------------------------------------------------ -->
+			<!-- gadget-detector-specific error message - do not remove -->
+			<!-- ------------------------------------------------------ -->
+			<?php if ( ! $jmwsIdMyGadget->isInstalled() ) : ?>
+				<p>The <?php echo $jmwsIdMyGadget->getGadgetDetector() ?> detector is not installed.
+					For information about how to install idMyGadget detectors,
+					see the appropriate README.md file on github
+					<a href="<?php echo $jmwsIdMyGadget->getLinkToReadme(); ?>" target="_blank">here</a>.</p>
+				<?php
+					$application = JFactory::getApplication();
+					$application->enqueueMessage(JText::_('TPL_PROTOSTAR_DETECTOR_NOT_INSTALLED'), 'error');
+				?>
+			<?php endif; ?>
+			<!-- ---------------------------------------------------- -->
+			<!-- values that might help with debugging - ok to remove -->
+			<!-- ---------------------------------------------------- -->
 			<?php
 				print '<p>';
 				if ( JFactory::getApplication()->get('jquery') )
