@@ -154,8 +154,7 @@ else
 		<p>$jmwsIdMyGadget->getGadgetDetector() = <?php echo $jmwsIdMyGadget->getGadgetDetector() ?></p>
 		<?php if ( $jmwsIdMyGadget->isInstalled() ) : ?>
 			<p>$jmwsIdMyGadget->getGadgetString() = <?php echo $jmwsIdMyGadget->getGadgetString() ?></p>
-			<p>$jmwsIdMyGadget->getIdMyGadget()->displayDeviceData() =
-				<?php echo $jmwsIdMyGadget->getIdMyGadget()->displayDeviceData() ?></p>
+			<p>$jmwsIdMyGadget->displayDeviceData() = <?php echo $jmwsIdMyGadget->displayDeviceData() ?></p>
 		<?php else : ?>
 			<p>The <?php echo $jmwsIdMyGadget->getGadgetDetector() ?> detector is not installed.
 				For information about how to install idMyGadget detectors,
