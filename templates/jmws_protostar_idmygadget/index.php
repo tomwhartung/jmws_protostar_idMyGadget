@@ -221,19 +221,21 @@ else
 				&copy; <?php echo date('Y'); ?> <?php echo $sitename; ?>
 			</p>
 
-			<!-- ------------------------------------------------------ -->
-			<!-- gadget-detector-specific error message - do not remove -->
-			<!-- ------------------------------------------------------ -->
-			<?php if ( ! $jmwsIdMyGadget->isInstalled() ) : ?>
-				<p>The <?php echo $jmwsIdMyGadget->getGadgetDetector() ?> detector is not installed.
-					For information about how to install idMyGadget detectors,
-					see the appropriate README.md file on github
-					<a href="<?php echo $jmwsIdMyGadget->getLinkToReadme(); ?>" target="_blank">here</a>.</p>
-				<?php
+			<?php
+				// If the gadget-detector is not installed, generate an error message
+				//
+				if ( ! $jmwsIdMyGadget->isInstalled() )
+				{
+					$linkToReadmeOnGithub =
+						'<a href="' . $jmwsIdMyGadget->getLinkToReadme() . '" target="_blank">' .
+						'the appropriate README.md file on github.</a>';
 					$application = JFactory::getApplication();
-					$application->enqueueMessage(JText::_('TPL_PROTOSTAR_DETECTOR_NOT_INSTALLED'), 'error');
-				?>
-			<?php endif; ?>
+					$application->enqueueMessage(
+						JText::_('TPL_PROTOSTAR_DETECTOR_NOT_INSTALLED') . $linkToReadmeOnGithub ,
+						'error'
+					);
+				}
+			?>
 			<!-- ---------------------------------------------------- -->
 			<!-- values that might help with debugging - ok to remove -->
 			<!-- ---------------------------------------------------- -->
