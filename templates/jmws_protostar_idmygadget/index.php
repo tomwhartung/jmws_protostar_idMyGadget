@@ -82,14 +82,8 @@ else
 	$jmwsIdMyGadget = new JmwsIdMyGadget( 'detect_mobile_browsers' );
 }
 //
-// Make sure we have jquery, then
 // If device is a phone, add in the jquery mobile css and library
 //
-if ( ! JFactory::getApplication()->get('jquery') )
-{
-	JFactory::getApplication()->set('jquery',true);
-	$doc->addScript( JmwsIdMyGadget::JQUERY_DESKTOP_JS_URL  );
-}
 if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
 {
 	$doc->addStyleSheet( JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
@@ -243,20 +237,10 @@ else
 			<!-- ---------------------------------------------------- -->
 			<!-- values that might help with debugging - ok to remove -->
 			<!-- ---------------------------------------------------- -->
-			<?php
-				print '<p>';
-				if ( JFactory::getApplication()->get('jquery') )
-				{
-					echo 'Yes we have jQuery!';
-				} else {
-					echo 'No jQuery for you!';
-				}
-				print '</p>';
-			?>
-		<p>$jmwsIdMyGadget->getGadgetDetector() = <?php echo $jmwsIdMyGadget->getGadgetDetector() ?></p>
-		<?php if ( $jmwsIdMyGadget->isInstalled() ) : ?>
-			<p>$jmwsIdMyGadget->getGadgetString() = <?php echo $jmwsIdMyGadget->getGadgetString() ?></p>
-		<?php endif; ?>
+			<p>$jmwsIdMyGadget->getGadgetDetector() = <?php echo $jmwsIdMyGadget->getGadgetDetector() ?></p>
+			<?php if ( $jmwsIdMyGadget->isInstalled() ) : ?>
+				<p>$jmwsIdMyGadget->getGadgetString() = <?php echo $jmwsIdMyGadget->getGadgetString() ?></p>
+			<?php endif; ?>
 		</div>
 	</footer>
 	<jdoc:include type="modules" name="debug" style="none" />
