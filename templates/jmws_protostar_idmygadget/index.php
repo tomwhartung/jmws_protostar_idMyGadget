@@ -91,18 +91,58 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 }
 
 // Logo file or site title param
-if ($this->params->get('logoFile'))
+if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
 {
-	$logo = '<img src="' . JUri::root() . $this->params->get('logoFile') . '" alt="' . $sitename . '" />';
+	if ($this->params->get('logoFilePhone'))
+	{
+		$logo = '<img src="' . JUri::root() . $this->params->get('logoFilePhone') .'" ' .
+			'alt="' . $sitename . '" />';
+	}
+	elseif ($this->params->get('sitetitlePhone'))
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' .
+			htmlspecialchars($this->params->get('sitetitlePhone')) . '</span>';
+	}
+	else
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+	}
 }
-elseif ($this->params->get('sitetitle'))
+else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_TABLET )
 {
-	$logo = '<span class="site-title" title="' . $sitename . '">' . htmlspecialchars($this->params->get('sitetitle')) . '</span>';
+	if ($this->params->get('logoFileTablet'))
+	{
+		$logo = '<img src="' . JUri::root() . $this->params->get('logoFileTablet') . '" ' .
+			'alt="' . $sitename . '" />';
+	}
+	elseif ($this->params->get('sitetitleTablet'))
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' .
+			htmlspecialchars($this->params->get('sitetitleTablet')) . '</span>';
+	}
+	else
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+	}
 }
-else
+else   // default to/assume we are on a desktop browser
 {
-	$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+	if ($this->params->get('logoFileDesktop'))
+	{
+		$logo = '<img src="' . JUri::root() . $this->params->get('logoFileDesktop') . '" ' .
+			'alt="' . $sitename . '" />';
+	}
+	elseif ($this->params->get('sitetitleDesktop'))
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' .
+			htmlspecialchars($this->params->get('sitetitleDesktop')) . '</span>';
+	}
+	else
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+	}
 }
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
