@@ -38,18 +38,88 @@ else
 // Add JavaScript Frameworks
 JHtml::_('bootstrap.framework');
 
-// Logo file or site title param
-if ($params->get('logoFile'))
+//
+// Initialize Device Detection
+//
+$jmwsIdMyGadget = null;
+require_once 'jmws_idMyGadget_for_joomla/JmwsIdMyGadget.php';
+$gadgetDetector = $params->get('gadgetDetector');
+
+if ( $gadgetDetector == 'mobile_detect' )
 {
-	$logo = '<img src="' . JUri::root() . $params->get('logoFile') . '" alt="' . $sitename . '" />';
+	$jmwsIdMyGadget = new JmwsIdMyGadget( 'mobile_detect' );
 }
-elseif ($params->get('sitetitle'))
+else if ( $gadgetDetector == 'tera_wurfl' )
 {
-	$logo = '<span class="site-title" title="' . $sitename . '">' . htmlspecialchars($params->get('sitetitle')) . '</span>';
+	$jmwsIdMyGadget = new JmwsIdMyGadget( 'tera_wurfl' );
 }
 else
 {
-	$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+	$jmwsIdMyGadget = new JmwsIdMyGadget( 'detect_mobile_browsers' );
+}
+//
+// If device is a phone, add in the jquery mobile css and library
+//
+if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+{
+	$doc->addStyleSheet( JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
+	$doc->addScript( JmwsIdMyGadget::JQUERY_MOBILE_JS_URL );
+}
+
+// Logo file or site title param
+if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+{
+	if ($params->get('logoFilePhone'))
+	{
+		$logo = '<img src="' . JUri::root() . $params->get('logoFilePhone') .'" ' .
+			'alt="' . $sitename . '" />';
+	}
+	elseif ($params->get('sitetitlePhone'))
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' .
+			htmlspecialchars($params->get('sitetitlePhone')) . '</span>';
+	}
+	else
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+	}
+	$sitedescription = $params->get('sitedescriptionPhone');
+}
+else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_TABLET )
+{
+	if ($params->get('logoFileTablet'))
+	{
+		$logo = '<img src="' . JUri::root() . $params->get('logoFileTablet') . '" ' .
+			'alt="' . $sitename . '" />';
+	}
+	elseif ($params->get('sitetitleTablet'))
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' .
+			htmlspecialchars($params->get('sitetitleTablet')) . '</span>';
+	}
+	else
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+	}
+	$sitedescription = $params->get('sitedescriptionTablet');
+}
+else   // default to/assume we are on a desktop browser
+{
+	if ($params->get('logoFileDesktop'))
+	{
+		$logo = '<img src="' . JUri::root() . $params->get('logoFileDesktop') . '" ' .
+			'alt="' . $sitename . '" />';
+	}
+	elseif ($params->get('sitetitleDesktop'))
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' .
+			htmlspecialchars($params->get('sitetitleDesktop')) . '</span>';
+	}
+	else
+	{
+		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+	}
+	$sitedescription = $params->get('sitedescriptionDesktop');
 }
 ?>
 <!DOCTYPE html>
