@@ -63,6 +63,48 @@
 					<option value="mobile_detect">Mobile Detect</option>
 					<option value="tera_wurfl">Tera Wurfl</option>
 				</field>
+
+				<field name="logoFilePhone" class="" type="media" default=""
+					label="TPL_PROTOSTAR_LOGO_FILE_PHONE_LABEL"
+					description="TPL_PROTOSTAR_LOGO_FILE_PHONE_DESC" />
+
+				<field name="sitetitlePhone"  type="text" default=""
+					label="TPL_PROTOSTAR_SITETITLE_PHONE_LABEL"
+					description="TPL_PROTOSTAR_SITETITLE_PHONE_DESC"
+					filter="string" />
+
+				<field name="sitedescriptionPhone"  type="text" default=""
+					label="TPL_PROTOSTAR_SITEDESCRIPTION_PHONE_LABEL"
+					description="TPL_PROTOSTAR_SITEDESCRIPTION_PHONE_DESC"
+					filter="string" />
+
+				<field name="logoFileTablet" class="" type="media" default=""
+					label="TPL_PROTOSTAR_LOGO_FILE_TABLET_LABEL"
+					description="TPL_PROTOSTAR_LOGO_FILE_TABLET_DESC" />
+
+				<field name="sitetitleTablet"  type="text" default=""
+					label="TPL_PROTOSTAR_SITETITLE_TABLET_LABEL"
+					description="TPL_PROTOSTAR_SITETITLE_TABLET_DESC"
+					filter="string" />
+
+				<field name="sitedescriptionTablet"  type="text" default=""
+					label="TPL_PROTOSTAR_SITEDESCRIPTION_TABLET_LABEL"
+					description="TPL_PROTOSTAR_SITEDESCRIPTION_TABLET_DESC"
+					filter="string" />
+
+				<field name="logoFileDesktop" class="" type="media" default=""
+					label="TPL_PROTOSTAR_LOGO_FILE_DESKTOP_LABEL"
+					description="TPL_PROTOSTAR_LOGO_FILE_DESKTOP_DESC" />
+
+				<field name="sitetitleDesktop"  type="text" default=""
+					label="TPL_PROTOSTAR_SITETITLE_DESKTOP_LABEL"
+					description="TPL_PROTOSTAR_SITETITLE_DESKTOP_DESC"
+					filter="string" />
+
+				<field name="sitedescriptionDesktop"  type="text" default=""
+					label="TPL_PROTOSTAR_SITEDESCRIPTION_DESKTOP_LABEL"
+					description="TPL_PROTOSTAR_SITEDESCRIPTION_DESKTOP_DESC"
+					filter="string" />
 			</fieldset>
 
 			<fieldset name="advanced">
@@ -73,20 +115,6 @@
 				<field name="templateBackgroundColor" class="" type="color" default="#F4F6F7"
 					label="TPL_PROTOSTAR_BACKGROUND_COLOR_LABEL"
 					description="TPL_PROTOSTAR_BACKGROUND_COLOR_DESC" />
-
-				<field name="logoFile" class="" type="media" default=""
-					label="TPL_PROTOSTAR_LOGO_LABEL"
-					description="TPL_PROTOSTAR_LOGO_DESC" />
-					
-				<field name="sitetitle"  type="text" default=""
-					label="JGLOBAL_TITLE"
-					description="JFIELD_ALT_PAGE_TITLE_LABEL"
-					filter="string" />
-
-				<field name="sitedescription"  type="text" default=""
-					label="JGLOBAL_DESCRIPTION"
-					description="JGLOBAL_SUBHEADING_DESC"
-					filter="string" />
 
 				<field name="googleFont"
 					type="radio"
