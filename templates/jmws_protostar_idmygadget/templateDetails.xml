@@ -77,12 +77,12 @@
 					label="TPL_PROTOSTAR_SITEDESCRIPTION_PHONE_LABEL"
 					description="TPL_PROTOSTAR_SITEDESCRIPTION_PHONE_DESC"
 					filter="string" />
-				<field name="fluidContainerTablet"
+				<field name="fluidContainerPhone"
 					type="radio"
 					class="btn-group btn-group-yesno"
 					default="0"
-					label="TPL_IDMYGADGET_FLUID_TABLET_LABEL"
-					description="TPL_IDMYGADGET_FLUID_TABLET_DESC">
+					label="TPL_IDMYGADGET_FLUID_PHONE_LABEL"
+					description="TPL_IDMYGADGET_FLUID_PHONE_DESC">
 					<option value="1">TPL_PROTOSTAR_FLUID</option>
 					<option value="0">TPL_PROTOSTAR_STATIC</option>
 				</field>
