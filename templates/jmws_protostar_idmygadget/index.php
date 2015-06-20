@@ -108,6 +108,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 	}
 	$sitedescription = $this->params->get('sitedescriptionPhone');
+	$fluidContainer = $params->get('fluidContainerPhone');
 }
 else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_TABLET )
 {
@@ -126,6 +127,7 @@ else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_T
 		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 	}
 	$sitedescription = $this->params->get('sitedescriptionTablet');
+	$fluidContainer = $params->get('fluidContainerTablet');
 }
 else   // default to/assume we are on a desktop browser
 {
@@ -144,6 +146,7 @@ else   // default to/assume we are on a desktop browser
 		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 	}
 	$sitedescription = $this->params->get('sitedescriptionDesktop');
+	$fluidContainer = $params->get('fluidContainerDesktop');
 }
 //
 // Set data-role attributes to be used with jQuery Mobile
@@ -211,12 +214,12 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	. ($layout ? ' layout-' . $layout : ' no-layout')
 	. ($task ? ' task-' . $task : ' no-task')
 	. ($itemid ? ' itemid-' . $itemid : '')
-	. ($params->get('fluidContainer') ? ' fluid' : '');
+	. ($fluidContainer ? ' fluid' : '');
 ?>">
 
 	<!-- Body -->
 	<div class="body" <?php echo $jqm_data_role_page ?> >
-			<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
+			<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner" <?php echo $jqm_data_role_header ?> >
 				<div class="header-inner clearfix">
@@ -267,7 +270,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	</div> <!-- .body -->
 	<!-- Footer -->
 	<footer class="footer" role="contentinfo" <?php echo $jqm_data_role_footer ?> >
-		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
+		<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
 			<hr />
 			<jdoc:include type="modules" name="footer" style="none" />
 			<p class="pull-right">
