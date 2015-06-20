@@ -84,6 +84,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 	}
 	$sitedescription = $params->get('sitedescriptionPhone');
+	$fluidContainer = $params->get('fluidContainerPhone');
 }
 else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_TABLET )
 {
@@ -102,6 +103,7 @@ else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_T
 		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 	}
 	$sitedescription = $params->get('sitedescriptionTablet');
+	$fluidContainer = $params->get('fluidContainerTablet');
 }
 else   // default to/assume we are on a desktop browser
 {
@@ -120,6 +122,7 @@ else   // default to/assume we are on a desktop browser
 		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 	}
 	$sitedescription = $params->get('sitedescriptionDesktop');
+	$fluidContainer = $params->get('fluidContainerDesktop');
 }
 ?>
 <!DOCTYPE html>
@@ -180,12 +183,12 @@ else   // default to/assume we are on a desktop browser
 	. ($layout ? ' layout-' . $layout : ' no-layout')
 	. ($task ? ' task-' . $task : ' no-task')
 	. ($itemid ? ' itemid-' . $itemid : '')
-	. ($params->get('fluidContainer') ? ' fluid' : '');
+	. ($fluidContainer ? ' fluid' : '');
 ?>">
 
 	<!-- Body -->
 	<div class="body">
-		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
+		<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner">
 				<div class="header-inner clearfix">
@@ -245,7 +248,7 @@ else   // default to/assume we are on a desktop browser
 	</div>
 	<!-- Footer -->
 	<div class="footer">
-		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
+		<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
 			<hr />
 			<?php echo $doc->getBuffer('modules', 'footer', array('style' => 'none')); ?>
 			<p class="pull-right">
