@@ -94,7 +94,6 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 // Logo file or site title param
 //
 $logo = '';
-$position_0_class = '';
 if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
 {
 	if ($this->params->get('logoFilePhone'))
@@ -130,7 +129,6 @@ else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_T
 	{
 		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 	}
-	$position_0_class = 'class="header-search pull-right"';
 	$sitedescription = $this->params->get('sitedescriptionTablet');
 	$fluidContainer = $params->get('fluidContainerTablet');
 }
@@ -150,7 +148,6 @@ else   // default to/assume we are on a desktop browser
 	{
 		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
 	}
-	$position_0_class = 'class="header-search pull-right"';
 	$sitedescription = $this->params->get('sitedescriptionDesktop');
 	$fluidContainer = $params->get('fluidContainerDesktop');
 }
@@ -228,6 +225,11 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 			<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner" <?php echo $jqm_data_role_header ?> >
+				<?php if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE ) : ?>
+					<div>
+						<jdoc:include type="modules" name="phone-header-nav" style="none" />
+					</div>
+				<?php endif; ?>
 				<div class="header-inner clearfix">
 					<a class="brand pull-left" href="<?php echo $this->baseurl; ?>/">
 						<?php echo $logo; ?>
@@ -235,7 +237,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 							<?php echo '<div class="site-description">' . htmlspecialchars($sitedescription) . '</div>'; ?>
 						<?php endif; ?>
 					</a>
-					<div <?php echo $position_0_class ?> >
+					<div class="header-search pull-right">
 						<jdoc:include type="modules" name="position-0" style="none" />
 					</div>
 				</div>
