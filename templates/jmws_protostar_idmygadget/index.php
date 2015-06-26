@@ -275,44 +275,44 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 				<?php endif; ?>
 			</div> <!-- .row-fluid -->
 		</div> <!-- .container -->
-	<!-- Footer -->
-	<footer class="footer" role="contentinfo" <?php echo $jqm_data_role_footer ?> >
-		<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
-			<hr />
-			<jdoc:include type="modules" name="footer" style="none" />
-			<p class="pull-right">
-				<a href="#top" id="back-top">
-					<?php echo JText::_('TPL_PROTOSTAR_BACKTOTOP'); ?>
-				</a>
-			</p>
-			<p>
-				&copy; <?php echo date('Y'); ?> <?php echo $sitename; ?>
-			</p>
+		<!-- Footer -->
+		<footer class="footer" role="contentinfo" <?php echo $jqm_data_role_footer ?> >
+			<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
+				<hr />
+				<jdoc:include type="modules" name="footer" style="none" />
+				<p class="pull-right">
+					<a href="#top" id="back-top">
+						<?php echo JText::_('TPL_PROTOSTAR_BACKTOTOP'); ?>
+					</a>
+				</p>
+				<p>
+					&copy; <?php echo date('Y'); ?> <?php echo $sitename; ?>
+				</p>
 
-			<?php
-				// If the gadget-detector is not installed, generate an error message
-				//
-				if ( ! $jmwsIdMyGadget->isInstalled() )
-				{
-					$linkToReadmeOnGithub =
-						'<a href="' . $jmwsIdMyGadget->getLinkToReadme() . '" target="_blank">' .
-						'the appropriate README.md file on github.</a>';
-					$application = JFactory::getApplication();
-					$application->enqueueMessage(
-						JText::_('TPL_PROTOSTAR_IDMYGADGET_DETECTOR_NOT_INSTALLED') . $linkToReadmeOnGithub ,
-						'error'
-					);
-				}
-			?>
-			<!-- ---------------------------------------------------- -->
-			<!-- values that might help with debugging - ok to remove -->
-			<!-- ---------------------------------------------------- -->
-			<p>$jmwsIdMyGadget->getGadgetDetector() = <?php echo $jmwsIdMyGadget->getGadgetDetector() ?></p>
-			<?php if ( $jmwsIdMyGadget->isInstalled() ) : ?>
-				<p>$jmwsIdMyGadget->getGadgetString() = <?php echo $jmwsIdMyGadget->getGadgetString() ?></p>
-			<?php endif; ?>
-		</div>
-	</footer>
+				<?php
+					// If the gadget-detector is not installed, generate an error message
+					//
+					if ( ! $jmwsIdMyGadget->isInstalled() )
+					{
+						$linkToReadmeOnGithub =
+							'<a href="' . $jmwsIdMyGadget->getLinkToReadme() . '" target="_blank">' .
+							'the appropriate README.md file on github.</a>';
+						$application = JFactory::getApplication();
+						$application->enqueueMessage(
+							JText::_('TPL_PROTOSTAR_IDMYGADGET_DETECTOR_NOT_INSTALLED') . $linkToReadmeOnGithub ,
+							'error'
+						);
+					}
+				?>
+				<!-- ---------------------------------------------------- -->
+				<!-- values that might help with debugging - ok to remove -->
+				<!-- ---------------------------------------------------- -->
+				<p>$jmwsIdMyGadget->getGadgetDetector() = <?php echo $jmwsIdMyGadget->getGadgetDetector() ?></p>
+				<?php if ( $jmwsIdMyGadget->isInstalled() ) : ?>
+					<p>$jmwsIdMyGadget->getGadgetString() = <?php echo $jmwsIdMyGadget->getGadgetString() ?></p>
+				<?php endif; ?>
+			</div>
+		</footer>
 	</div> <!-- .body -->
 	<jdoc:include type="modules" name="debug" style="none" />
 </body>
