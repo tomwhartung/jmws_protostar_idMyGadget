@@ -323,6 +323,8 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 				</p>
 			</div> <!-- .container or .container-fluid -->
 		<?php endif; ?>
+	</footer>
+	<jdoc:include type="modules" name="debug" style="none" />
 		<?php
 			// If the gadget-detector is not installed, generate an error message
 			//
@@ -338,8 +340,6 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 				);
 			}
 		?>
-	</footer>
-	<jdoc:include type="modules" name="debug" style="none" />
 <?php
   if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
   {
