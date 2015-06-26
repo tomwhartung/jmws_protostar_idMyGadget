@@ -304,13 +304,6 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 						);
 					}
 				?>
-				<!-- ---------------------------------------------------- -->
-				<!-- values that might help with debugging - ok to remove -->
-				<!-- ---------------------------------------------------- -->
-				<p>$jmwsIdMyGadget->getGadgetDetector() = <?php echo $jmwsIdMyGadget->getGadgetDetector() ?></p>
-				<?php if ( $jmwsIdMyGadget->isInstalled() ) : ?>
-					<p>$jmwsIdMyGadget->getGadgetString() = <?php echo $jmwsIdMyGadget->getGadgetString() ?></p>
-				<?php endif; ?>
 			</div>
 		</footer>
 	</div> <!-- .body -->
