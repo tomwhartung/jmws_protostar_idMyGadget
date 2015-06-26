@@ -325,21 +325,21 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 		<?php endif; ?>
 	</footer>
 	<jdoc:include type="modules" name="debug" style="none" />
-		<?php
-			// If the gadget-detector is not installed, generate an error message
-			//
-			if ( ! $jmwsIdMyGadget->isInstalled() )
-			{
-				$linkToReadmeOnGithub =
-					'<a href="' . $jmwsIdMyGadget->getLinkToReadme() . '" target="_blank">' .
-					'the appropriate README.md file on github.</a>';
-				$application = JFactory::getApplication();
-				$application->enqueueMessage(
-					JText::_('TPL_PROTOSTAR_IDMYGADGET_DETECTOR_NOT_INSTALLED') . $linkToReadmeOnGithub ,
-					'error'
-				);
-			}
-		?>
+	<?php
+		// If the gadget-detector is not installed, generate an error message
+		//
+		if ( ! $jmwsIdMyGadget->isInstalled() )
+		{
+			$linkToReadmeOnGithub =
+				'<a href="' . $jmwsIdMyGadget->getLinkToReadme() . '" target="_blank">' .
+				'the appropriate README.md file on github.</a>';
+			$application = JFactory::getApplication();
+			$application->enqueueMessage(
+				JText::_('TPL_PROTOSTAR_IDMYGADGET_DETECTOR_NOT_INSTALLED') . $linkToReadmeOnGithub ,
+				'error'
+			);
+		}
+	?>
 <?php
   if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
   {
