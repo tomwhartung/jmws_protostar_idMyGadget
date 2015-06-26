@@ -275,7 +275,6 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 				<?php endif; ?>
 			</div> <!-- .row-fluid -->
 		</div> <!-- .container -->
-	</div> <!-- .body -->
 	<!-- Footer -->
 	<footer class="footer" role="contentinfo" <?php echo $jqm_data_role_footer ?> >
 		<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
@@ -314,6 +313,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 			<?php endif; ?>
 		</div>
 	</footer>
+	</div> <!-- .body -->
 	<jdoc:include type="modules" name="debug" style="none" />
 </body>
 </html>
