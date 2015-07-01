@@ -83,15 +83,19 @@ else
 	$jmwsIdMyGadget = new JmwsIdMyGadget( 'detect_mobile_browsers' );
 }
 //
-// If device is a phone, add in the jquery mobile css and library
+// If device is a phone, add in jquery mobile js and css and idMyGadget code
 //
 if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
 {
 	$doc->addStyleSheet( JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
 	$doc->addScript( JmwsIdMyGadget::JQUERY_MOBILE_JS_URL );
+	$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/idMyGadget.css');
+	$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/idMyGadget.js');
 }
 //
-// Logo file or site title param
+// This is where we set variables equal to bits of device-specific markup
+// For example: the logo file or site title param, etc.
+//   Note that the logic differs from that used in protostar a bit
 //
 $logo = '';
 if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
@@ -152,7 +156,7 @@ else   // default to/assume we are on a desktop browser
 	$fluidContainer = $params->get('fluidContainerDesktop');
 }
 //
-// Set data-role attributes to be used with jQuery Mobile
+// Set data-role and other attributes to be used with jQuery Mobile
 //
 $jqm_data_role_page = '';
 $jqm_data_role_header = '';

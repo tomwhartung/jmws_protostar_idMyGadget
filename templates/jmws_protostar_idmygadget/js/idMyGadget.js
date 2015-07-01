@@ -13,7 +13,7 @@
 		var phoneBurgerMenuLeft = document.getElementById( 'phone-burger-menu-left' );
 		var phoneBurgerMenuRight = document.getElementById( 'phone-burger-menu-right' );
 	//	console.log( 'The document is ready!' );
-		console.log( 'phoneBurgerMenuLeft: ' + phoneBurgerMenuLeft );
-		console.log( 'phoneBurgerMenuRight: ' + phoneBurgerMenuRight );
+		console.log( 'protostar has this for the phoneBurgerMenuLeft elt: ' + phoneBurgerMenuLeft );
+		console.log( 'protostar has this for the phoneBurgerMenuRight elt: ' + phoneBurgerMenuRight );
 	})
 })(jQuery);
