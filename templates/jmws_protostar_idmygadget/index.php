@@ -93,6 +93,23 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/idMyGadget.js');
 }
 //
+// Initialize markup for the optional "phone-burger" menus,
+//  depending on which ones, if any, are being used,
+//
+$phone_burger_menu_left = '';
+$phone_burger_menu_right = '';
+
+if ( $this->countModules('phone-burger-menu-left' ) )
+{
+	$phone_burger_menu_left = '<canvas id = "phone-burger-menu-left" width="50" height="50">' .
+		'&nbsp;MenuL&nbsp;' . '</canvas>';
+}
+if ( $this->countModules('phone-burger-menu-right' ) )
+{
+	$phone_burger_menu_right = '<canvas id = "phone-burger-menu-right" width="50" height="50">' .
+		'&nbsp;MenuR&nbsp;' . '</canvas>';
+}
+//
 // This is where we set variables equal to bits of device-specific markup
 // For example: the logo file or site title param, etc.
 //   Note that the logic differs from that used in protostar a bit
