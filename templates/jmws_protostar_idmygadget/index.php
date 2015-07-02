@@ -90,7 +90,11 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	$doc->addStyleSheet( JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
 	$doc->addScript( JmwsIdMyGadget::JQUERY_MOBILE_JS_URL );
 	$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/idMyGadget.css');
-	$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/idMyGadget.js');
+	if ( $this->countModules('phone-burger-menu-left') ||
+	     $this->countModules('phone-burger-menu-right') )
+	{
+		$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/phoneBurgerMenu.js');
+	}
 }
 //
 // Initialize markup for the optional "phone-burger" menus,
@@ -124,12 +128,18 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	}
 	elseif ($this->params->get('sitetitlePhone'))
 	{
-		$logo = '<h2 class="site-title" title="' . $sitename . '">' .
-			htmlspecialchars($this->params->get('sitetitlePhone')) . '</h2>';
+		$logo =
+			'<a href="pbm-left" class="phone-burger-menu-left">' . $phone_burger_menu_left . '</a>' .
+			'<h2 class="site-title" title="' . $sitename . '">' .
+				htmlspecialchars($this->params->get('sitetitlePhone')) . '</h2>' .
+			'<a href="pbm-right" class="phone-burger-menu-right">' . $phone_burger_menu_right . '</a>';
 	}
 	else
 	{
-		$logo = '<h2 class="site-title" title="' . $sitename . '">' . $sitename . '</h2>';
+		$logo =
+			'<a href="pbm-left" class="phone-burger-menu-left">' . $phone_burger_menu_left . '</a>' .
+			'<h2 class="site-title" title="' . $sitename . '">' . $sitename . '</h2>' .
+			'<a href="pbm-right" class="phone-burger-menu-right">' . $phone_burger_menu_right . '</a>';
 	}
 	$sitedescription = $this->params->get('sitedescriptionPhone');
 	$fluidContainer = $params->get('fluidContainerPhone');
