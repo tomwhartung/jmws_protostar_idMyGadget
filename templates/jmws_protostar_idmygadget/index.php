@@ -105,15 +105,19 @@ $phone_burger_menu_right = '';
 
 if ( $this->countModules('phone-burger-menu-left' ) )
 {
-	$phone_burger_menu_left = '<canvas id = "phone-burger-menu-left" width="50" height="50">' .
-		'&nbsp;MenuL&nbsp;' . '</canvas>';
+	$phone_burger_menu_left = '<canvas id = "phone-burger-menu-left" ' .
+		'width="' . $this->params->get('phoneBurgerMenuLeftSize') . '" ' .
+		'height="' . $this->params->get('phoneBurgerMenuLeftSize') . '">' .
+		'&nbsp;Menu&nbsp;' . '</canvas>';
 	print '<script>var phoneBurgerMenuLeftColor = "' .
 		$this->params->get('phoneBurgerMenuLeftColor') . '";</script>';
 }
 if ( $this->countModules('phone-burger-menu-right' ) )
 {
-	$phone_burger_menu_right = '<canvas id = "phone-burger-menu-right" width="50" height="50">' .
-		'&nbsp;MenuR&nbsp;' . '</canvas>';
+	$phone_burger_menu_right = '<canvas id = "phone-burger-menu-right" ' .
+		'width="' . $this->params->get('phoneBurgerMenuRightSize') . '" ' .
+		'height="' . $this->params->get('phoneBurgerMenuRightSize') . '">' .
+		'&nbsp;Menu&nbsp;' . '</canvas>';
 	print '<script>var phoneBurgerMenuRightColor = "' .
 		$this->params->get('phoneBurgerMenuRightColor') . '";</script>';
 }
