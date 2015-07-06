@@ -12,165 +12,106 @@ var phoneBurgerMenu = {};
 {
 	$(document).ready(function()
 	{
-		phoneBurgerMenu.drawPhoneBurgerMenus();
+		phoneBurgerMenu.drawPhoneBurgerMenuIcons();
 	})
 })(jQuery);
 
-phoneBurgerMenu.drawPhoneBurgerMenus = function () {
+/**
+ * Driver function to draw zero, one, or both menu icons, as appropriate
+ * @returns {undefined}
+ */
+phoneBurgerMenu.drawPhoneBurgerMenuIcons = function () {
 	phoneBurgerMenu.leftElement = document.getElementById( 'phone-burger-menu-left' );
 	phoneBurgerMenu.rightElement = document.getElementById( 'phone-burger-menu-right' );
 
-	if ( typeof phoneBurgerMenuLeftColor !== 'undefined' ) {     // set in admin console
-	//	phoneBurgerMenu.drawThinSquarePhoneBurgerMenu( phoneBurgerMenu.leftElement, phoneBurgerMenuLeftColor );
-	//	phoneBurgerMenu.drawFatSquarePhoneBurgerMenu( phoneBurgerMenu.leftElement, phoneBurgerMenuLeftColor );
-		phoneBurgerMenu.drawThinRoundedPhoneBurgerMenu( phoneBurgerMenu.leftElement, phoneBurgerMenuLeftColor );
-	//	phoneBurgerMenu.drawFatRoundedPhoneBurgerMenu( phoneBurgerMenu.leftElement, phoneBurgerMenuLeftColor );
-	//	console.log( 'drawing left phone burger menu' );
+	if ( typeof phoneBurgerIconLeftOptions !== 'undefined' ) {     // options are set in the admin console
+		phoneBurgerMenu.drawPhoneBurgerMenuIcon( phoneBurgerMenu.leftElement, phoneBurgerIconLeftOptions );
 	}
-
-	if ( typeof phoneBurgerMenuRightColor !== 'undefined' ) {     // set in admin console
-	//	phoneBurgerMenu.drawThinSquarePhoneBurgerMenu( phoneBurgerMenu.rightElement, phoneBurgerMenuRightColor );
-	//	phoneBurgerMenu.drawFatSquarePhoneBurgerMenu( phoneBurgerMenu.rightElement, phoneBurgerMenuRightColor );
-		phoneBurgerMenu.drawThinRoundedPhoneBurgerMenu( phoneBurgerMenu.rightElement, phoneBurgerMenuRightColor );
-	//	phoneBurgerMenu.drawFatRoundedPhoneBurgerMenu( phoneBurgerMenu.rightElement, phoneBurgerMenuRightColor );
-	//	console.log( 'drawing right phone burger menu' );
+	if ( typeof phoneBurgerIconRightOptions !== 'undefined' ) {     // options are set in the admin console
+		phoneBurgerMenu.drawPhoneBurgerMenuIcon( phoneBurgerMenu.rightElement, phoneBurgerIconRightOptions );
 	}
-};
-/**
- * Thin Square: three rectangles, each the same height as the two gaps,
- *    and top and bottom margins as well
- * @param {type} canvasElement
- * @param {type} menuColor
- * @returns {undefined}
- */
-phoneBurgerMenu.drawThinSquarePhoneBurgerMenu = function ( canvasElement, menuColor ) {
-	if ( canvasElement === null ) {
-		console.log( 'phoneBurgerMenu.drawThinSquarePhoneBurgerMenu error: passed-in canvasElement is null!' );
-		return;
-	}
-
-	var context = canvasElement.getContext( '2d' );
-	var canvasWidth = canvasElement.width;
-	var canvasHeight = canvasElement.height;
-	var barHeight = Math.round( canvasHeight / 7 );
-	var gapHeight = barHeight;
-	var marginWidth = Math.round( canvasWidth / 7 );
-	var barWidth = Math.round( canvasWidth - (marginWidth * 2) );
-
-	console.log( 'ThinSquare, barHeight: ' + barHeight );
-	console.log( 'ThinSquare, gapHeight: ' + gapHeight );
-
-	context.fillStyle = menuColor;
-	context.fillRect( marginWidth, barHeight, barWidth, barHeight );
-	context.fillRect( marginWidth, barHeight * 3, barWidth, barHeight );
-	context.fillRect( marginWidth, barHeight * 5, barWidth, barHeight );
-
-};
-/**
- * Fat Square: three rectangles, each twice the height of the two gaps,
- *    with no top margin and minimal (leftover) bottom margin
- * @param {type} canvasElement
- * @param {type} menuColor
- * @returns {undefined}
- */
-phoneBurgerMenu.drawFatSquarePhoneBurgerMenu = function ( canvasElement, menuColor ) {
-	if ( canvasElement === null ) {
-		console.log( 'phoneBurgerMenu.drawFatSquarePhoneBurgerMenu error: passed-in canvasElement is null!' );
-		return;
-	}
-
-	var context = canvasElement.getContext( '2d' );
-	var canvasWidth = canvasElement.width;
-	var canvasHeight = canvasElement.height;
-	var barHeight = Math.round( canvasHeight / 4 );
-	var gapHeight = Math.round( canvasHeight / 8 )
-	var marginWidth = Math.round( canvasWidth / 8 );
-	var barWidth = Math.round( canvasWidth - (marginWidth * 2) );
-
-	console.log( 'FatSquare, barHeight: ' + barHeight );
-	console.log( 'FatSquare, gapHeight: ' + gapHeight );
-
-	context.fillStyle = menuColor;
-	context.fillRect( marginWidth, 0, barWidth, barHeight );
-	context.fillRect( marginWidth, barHeight + gapHeight, barWidth, barHeight );
-	context.fillRect( marginWidth, 2 * (barHeight + gapHeight), barWidth, barHeight );
-
 };
 
 /**
- * Thin Rounded: three rounded rectangles, each the same height as the two gaps,
- *    and top and bottom margins as well
+ * Draw three lines, using the options specified in the admin console
  * @param {type} canvasElement
- * @param {type} menuColor
+ * @param {type} phoneBurgerIconOptions
  * @returns {undefined}
  */
-phoneBurgerMenu.drawThinRoundedPhoneBurgerMenu = function ( canvasElement, menuColor ) {
+phoneBurgerMenu.drawPhoneBurgerMenuIcon = function ( canvasElement, phoneBurgerIconOptions ) {
 	if ( canvasElement === null ) {
 		console.log( 'phoneBurgerMenu.drawThinRoundedPhoneBurgerMenu error: passed-in canvasElement is null!' );
 		return;
 	}
 
+	phoneBurgerMenu.setPhoneBurgerIconDimensions( canvasElement, phoneBurgerIconOptions );
+	var leftMargin = phoneBurgerMenu.leftMargin;
+	var topMargin = phoneBurgerMenu.topMargin;
+	var barHeight = phoneBurgerMenu.barHeight;
+	var barWidth = phoneBurgerMenu.barWidth;
+	var gapHeight = phoneBurgerMenu.gapHeight;
+	var firstBarMidpoint = topMargin;
+	var secondBarMidpoint = topMargin+barHeight+gapHeight;
+	var thirdBarMidpoint = topMargin + 2*(barHeight+gapHeight);
+
+	console.log( 'FINAL, leftMargin: ' + leftMargin );
+	console.log( 'FINAL, topMargin: ' + topMargin );
+	console.log( 'FINAL, barHeight: ' + barHeight );
+	console.log( 'FINAL, barWidth: ' + barWidth );
+	console.log( 'FINAL, gapHeight: ' + gapHeight );
+
 	var context = canvasElement.getContext( '2d' );
-	var canvasWidth = canvasElement.width;
-	var canvasHeight = canvasElement.height;
-	var barHeight = Math.round( canvasHeight / 7 );
-	var gapHeight = barHeight;   // for now...
-	var marginWidth = Math.round( canvasWidth / 7 );
-	var barWidth = Math.round( canvasWidth - (marginWidth * 2) );
-
-	console.log( 'ThinRounded, barHeight: ' + barHeight );
-	console.log( 'ThinRounded, barWidth: ' + barWidth );
-	console.log( 'ThinRounded, gapHeight: ' + gapHeight );
-
+	context.save();
 	context.beginPath();
-	context.strokeStyle = menuColor;
-//	context.arcTo( marginWidth, barHeight, (marginWidth+barWidth), barHeight * 2, 3 );
-	context.moveTo( marginWidth, gapHeight );
-	context.lineTo( marginWidth+barWidth, gapHeight );
-	context.lineTo( marginWidth+barWidth, gapHeight+barHeight );
-//	context.arcTo( marginWidth, gapHeight+barHeight, marginWidth, gapHeight, 3 );
-//	context.arcTo ( marginWidth+barWidth, gapHeight, marginWidth+barWidth, gapHeight+barHeight, 3 );
+	context.strokeStyle = phoneBurgerIconOptions.color;
+	context.lineCap = phoneBurgerIconOptions.lineCap;
+	context.lineWidth = barHeight;
 
-//	context.arcTo( marginWidth, gapHeight+barHeight, marginWidth, barHeight, 3 );
+	context.moveTo( leftMargin, firstBarMidpoint );
+	context.lineTo( leftMargin+barWidth, firstBarMidpoint );
 
-//	context.arcTo( marginWidth, barHeight, (marginWidth+barWidth), barHeight * 2, 3 );
+	context.moveTo( leftMargin, secondBarMidpoint );
+	context.lineTo( leftMargin+barWidth, secondBarMidpoint );
+
+	context.moveTo( leftMargin, thirdBarMidpoint );
+	context.lineTo( leftMargin+barWidth, thirdBarMidpoint );
+
 	context.stroke();
-
-//	context.fillStyle = menuColor;
-//	context.fill();
-
-//	context.fillRect( marginWidth, barHeight * 3, barWidth, barHeight );
-//	context.fillRect( marginWidth, barHeight * 5, barWidth, barHeight );
-
+	context.restore();
 };
-
-
 /**
- * Fat Rounded:
+ * Use the options specified in the admin console to set the dimensions of lines in the icon
  * @param {type} canvasElement
- * @param {type} menuColor
+ * @param {type} phoneBurgerIconOptions
  * @returns {undefined}
  */
-phoneBurgerMenu.drawFatRoundedPhoneBurgerMenu = function ( canvasElement, menuColor ) {
-	if ( canvasElement === null ) {
-		console.log( 'phoneBurgerMenu.drawMenu error: passed-in canvasElement is null!' );
-		return;
-	}
-
-	var context = canvasElement.getContext( '2d' );
+phoneBurgerMenu.setPhoneBurgerIconDimensions = function ( canvasElement, phoneBurgerIconOptions ) {
+	var topMargin;
+	var barHeight;
+	var gapHeight;
 	var canvasWidth = canvasElement.width;
 	var canvasHeight = canvasElement.height;
-	var barHeight = Math.round( canvasHeight / 7 );
-	var gapHeight = barHeight;   // for now...
-	var marginWidth = Math.round( canvasWidth / 7 );
-	var barWidth = Math.round( canvasWidth - (marginWidth * 2) );
+	var oneEleventh = Math.round( canvasHeight / 11 );
 
-	console.log( 'FatRounded, barHeight: ' + barHeight );
-	console.log( 'FatRounded, gapHeight: ' + gapHeight );
+	if ( phoneBurgerIconOptions.lineSize === 'fat' ) {
+		barHeight = oneEleventh * 3;
+		gapHeight = oneEleventh;
+		topMargin = Math.ceil( barHeight / 2 );
+	}
+	else if ( phoneBurgerIconOptions.lineSize === 'normal' ) {
+		barHeight = oneEleventh * 2;
+		gapHeight = oneEleventh * 2;
+		topMargin = oneEleventh + Math.ceil( barHeight / 2 );
+	}
+	else {   // phoneBurgerIconOptions.lineSize === 'thin'
+		barHeight = oneEleventh;
+		gapHeight = oneEleventh * 2;
+		topMargin = (oneEleventh * 2) + Math.ceil( barHeight / 2 );
+	}
 
-	context.fillStyle = menuColor;
-	context.fillRect( marginWidth, barHeight, barWidth, barHeight );
-	context.fillRect( marginWidth, barHeight * 3, barWidth, barHeight );
-	context.fillRect( marginWidth, barHeight * 5, barWidth, barHeight );
-
+	phoneBurgerMenu.topMargin = topMargin;
+	phoneBurgerMenu.barHeight = barHeight;
+	phoneBurgerMenu.gapHeight = gapHeight;
+	phoneBurgerMenu.leftMargin = Math.ceil( barHeight / 2 );
+	phoneBurgerMenu.barWidth = Math.round( canvasWidth - (barHeight*2) );
 };
