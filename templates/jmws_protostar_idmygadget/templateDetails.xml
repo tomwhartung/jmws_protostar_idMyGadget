@@ -152,8 +152,9 @@
 					<option value="d">d</option>
 					<option value="e">e</option>
 				</field>
-				<field type="spacer" name="spacerPhoneBurgerMenus" class="text"
-					label="TPL_IDMYGADGET_PHONE_BURGER_MENUS" />
+
+				<field type="spacer" name="spacerPhoneBurgerMenuLeft" class="text"
+					label="TPL_IDMYGADGET_PHONE_BURGER_MENU_LEFT" />
 				<field
 					name="phoneBurgerMenuLeftSize"
 					type="list"
