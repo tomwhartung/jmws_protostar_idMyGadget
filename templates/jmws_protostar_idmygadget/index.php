@@ -104,7 +104,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	}
 	if ( $this->countModules('phone-burger-menu-left' ) )
 	{
-		$phone_burger_icon_canvas_left = '<canvas id = "phone-burger-menu-left" ' .
+		$phone_burger_icon_canvas_left = '<canvas id="phone-burger-icon-left" ' .
 			'width="' . $this->params->get('phoneBurgerMenuLeftSize') . '" ' .
 			'height="' . $this->params->get('phoneBurgerMenuLeftSize') . '">' .
 			'&nbsp;Menu&nbsp;' . '</canvas>';
@@ -118,7 +118,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	}
 	if ( $this->countModules('phone-burger-menu-right' ) )
 	{
-		$phone_burger_icon_canvas_right = '<canvas id = "phone-burger-menu-right" ' .
+		$phone_burger_icon_canvas_right = '<canvas id="phone-burger-icon-right" ' .
 			'width="' . $this->params->get('phoneBurgerMenuRightSize') . '" ' .
 			'height="' . $this->params->get('phoneBurgerMenuRightSize') . '">' .
 			'&nbsp;Menu&nbsp;' . '</canvas>';
@@ -147,23 +147,23 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	elseif ($this->params->get('sitetitlePhone'))
 	{
 		$logo =
-			'<a href="pbm-left" class="phone-burger-menu-left">' .
+			'<a href="#phone-burger-menu-left" data-rel="dialog">' .
 				$phone_burger_icon_canvas_left . '</a>' .
 			$phone_burger_icon_js_left .
 			'<h2 class="site-title" title="' . $sitename . '">' .
 				htmlspecialchars($this->params->get('sitetitlePhone')) . '</h2>' .
-			'<a href="pbm-right" class="phone-burger-menu-right">' .
+			'<a href="#phone-burger-menu-right" data-rel="dialog">' .
 				$phone_burger_icon_canvas_right . '</a>' .
 			$phone_burger_icon_js_right;
 	}
 	else
 	{
 		$logo =
-			'<a href="pbm-left" class="phone-burger-menu-left">' .
+			'<a href="#phone-burger-menu-left" data-rel="dialog">' .
 				$phone_burger_icon_canvas_left . '</a>' .
 			$phone_burger_icon_js_left .
 			'<h2 class="site-title" title="' . $sitename . '">' . $sitename . '</h2>' .
-			'<a href="pbm-right" class="phone-burger-menu-right">' .
+			'<a href="#phone-burger-menu-right" data-rel="dialog">' .
 				$phone_burger_icon_canvas_right . '</a>' .
 			$phone_burger_icon_js_right;
 	}
