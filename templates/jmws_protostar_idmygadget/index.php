@@ -152,7 +152,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 			$phone_burger_icon_js_left .
 			'<h2 class="site-title" title="' . $sitename . '">' .
 				htmlspecialchars($this->params->get('sitetitlePhone')) . '</h2>' .
-			'<a href="#phone-burger-menu-right" data-rel="dialog">' .
+			'<a href="#phone-burger-menu-right" class="pull-right" data-rel="dialog">' .
 				$phone_burger_icon_canvas_right . '</a>' .
 			$phone_burger_icon_js_right;
 	}
@@ -163,7 +163,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 				$phone_burger_icon_canvas_left . '</a>' .
 			$phone_burger_icon_js_left .
 			'<h2 class="site-title" title="' . $sitename . '">' . $sitename . '</h2>' .
-			'<a href="#phone-burger-menu-right" data-rel="dialog">' .
+			'<a href="#phone-burger-menu-right" class="pull-right" data-rel="dialog">' .
 				$phone_burger_icon_canvas_right . '</a>' .
 			$phone_burger_icon_js_right;
 	}
