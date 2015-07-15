@@ -86,15 +86,13 @@ else
 // The phone burger menu was originally intended for phones only, hence the name.
 // Now we have options so that, if desired, we can use it on tablets and desktops as well.
 //
+$jmwsIdMyGadget->usingJQueryMobile = FALSE;
 $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft = FALSE;
 $jmwsIdMyGadget->phoneBurgerIconThisDeviceRight = FALSE;
-$phone_burger_icon_canvas_left = '';
-$phone_burger_icon_canvas_right = '';
-$phone_burger_icon_js_left = '';
-$phone_burger_icon_js_right = '';
 
 if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
 {
+	$jmwsIdMyGadget->usingJQueryMobile = TRUE;    // always use it on phones
 	if ( $this->countModules('phone-burger-menu-left') )
 	{
 		$jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft = TRUE;
@@ -109,11 +107,13 @@ else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_T
 	if ( $this->countModules('phone-burger-menu-left') &&
 	     $this->params->get('phoneBurgerMenuLeftOnTablet') )
 	{
+		$jmwsIdMyGadget->usingJQueryMobile = TRUE;
 		$jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft = TRUE;
 	}
 	if ( $this->countModules('phone-burger-menu-right') &&
 	     $this->params->get('phoneBurgerMenuRightOnTablet') )
 	{
+		$jmwsIdMyGadget->usingJQueryMobile = TRUE;
 		$jmwsIdMyGadget->phoneBurgerIconThisDeviceRight = TRUE;
 	}
 }
@@ -122,30 +122,41 @@ else
 	if ( $this->countModules('phone-burger-menu-left') &&
 	     $this->params->get('phoneBurgerMenuLeftOnDesktop') )
 	{
+		$jmwsIdMyGadget->usingJQueryMobile = TRUE;
 		$jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft = TRUE;
 	}
 	if ( $this->countModules('phone-burger-menu-right') &&
 	     $this->params->get('phoneBurgerMenuRightOnDesktop') )
 	{
+		$jmwsIdMyGadget->usingJQueryMobile = TRUE;
 		$jmwsIdMyGadget->phoneBurgerIconThisDeviceRight = TRUE;
 	}
 }
 //
-// If device is a phone,
-// o  Add in jquery mobile js and css and idMyGadget code
-// o  Create markup for the optional "phone-burger" menus,
+// If it's been decided we are using jQuery mobile,
+//    add in the appropriate idMyGadget and jQuery mobile js and css code
+// Note that it's best to add in our customizations before adding in jQuery mobile:
+//    http://demos.jquerymobile.com/1.0/docs/api/globalconfig.html
 //
-if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+if ( $jmwsIdMyGadget->usingJQueryMobile )
 {
+	if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft ||
+	     $jmwsIdMyGadget->phoneBurgerIconThisDeviceRight )
+	{
+		$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/idMyGadget.css');
+		$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/phoneBurgerMenu.js');
+	}
 	$doc->addStyleSheet( JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
 	$doc->addScript( JmwsIdMyGadget::JQUERY_MOBILE_JS_URL );
 }
-if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft ||
-     $jmwsIdMyGadget->phoneBurgerIconThisDeviceRight )
-{
-	$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/idMyGadget.css');
-	$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/phoneBurgerMenu.js');
-}
+//
+// If we are using one of the optional "phone-burger" menus,
+//    create markup and js code for them
+//
+$phone_burger_icon_canvas_left = '';
+$phone_burger_icon_canvas_right = '';
+$phone_burger_icon_js_left = '';
+$phone_burger_icon_js_right = '';
 if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft )
 {
 	$phone_burger_icon_canvas_left =
@@ -181,19 +192,22 @@ if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft )
 //
 // This is where we set variables equal to bits of device-specific markup
 // For example: the logo file or site title param, etc.
-//   Note that the logic differs from that used in protostar a bit
 //
 $logo = '';
 if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
 {
 	if ($this->params->get('logoFilePhone'))
 	{
-		$logo = '<img src="' . JUri::root() . $this->params->get('logoFilePhone') .'" ' .
-			'alt="' . $sitename . '" />';
+		$logo =
+			$phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
+			'<img src="' . JUri::root() . $this->params->get('logoFilePhone') .'" ' .
+				'alt="' . $sitename . '" />' .
+			$phone_burger_icon_canvas_right . $phone_burger_icon_js_right;
 	}
 	elseif ($this->params->get('sitetitlePhone'))
 	{
-		$logo = $phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
+		$logo =
+			$phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
 			'<h2 class="site-title" title="' . $sitename . '">' .
 				htmlspecialchars($this->params->get('sitetitlePhone')) . '</h2>' .
 			$phone_burger_icon_canvas_right . $phone_burger_icon_js_right;
@@ -212,17 +226,26 @@ else if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_T
 {
 	if ($this->params->get('logoFileTablet'))
 	{
-		$logo = '<img src="' . JUri::root() . $this->params->get('logoFileTablet') . '" ' .
-			'alt="' . $sitename . '" />';
+		$logo =
+			$phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
+			'<img src="' . JUri::root() . $this->params->get('logoFileTablet') . '" ' .
+				'alt="' . $sitename . '" />' .
+			$phone_burger_icon_canvas_right . $phone_burger_icon_js_right;
 	}
 	elseif ($this->params->get('sitetitleTablet'))
 	{
-		$logo = '<span class="site-title" title="' . $sitename . '">' .
-			htmlspecialchars($this->params->get('sitetitleTablet')) . '</span>';
+		$logo =
+			$phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
+			'<span class="site-title" title="' . $sitename . '">' .
+				htmlspecialchars($this->params->get('sitetitleTablet')) . '</span>' .
+			$phone_burger_icon_canvas_right . $phone_burger_icon_js_right;
 	}
 	else
 	{
-		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+		$logo =
+			$phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
+			'<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>' .
+			$phone_burger_icon_canvas_right . $phone_burger_icon_js_right;
 	}
 	$sitedescription = $this->params->get('sitedescriptionTablet');
 	$fluidContainer = $params->get('fluidContainerTablet');
@@ -231,17 +254,26 @@ else   // default to/assume we are on a desktop browser
 {
 	if ($this->params->get('logoFileDesktop'))
 	{
-		$logo = '<img src="' . JUri::root() . $this->params->get('logoFileDesktop') . '" ' .
-			'alt="' . $sitename . '" />';
+		$logo =
+			$phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
+			'<img src="' . JUri::root() . $this->params->get('logoFileDesktop') . '" ' .
+				'alt="' . $sitename . '" />' .
+			$phone_burger_icon_canvas_right . $phone_burger_icon_js_right;
 	}
 	elseif ($this->params->get('sitetitleDesktop'))
 	{
-		$logo = '<span class="site-title" title="' . $sitename . '">' .
-			htmlspecialchars($this->params->get('sitetitleDesktop')) . '</span>';
+		$logo =
+			$phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
+			'<span class="site-title" title="' . $sitename . '">' .
+				htmlspecialchars($this->params->get('sitetitleDesktop')) . '</span>' .
+			$phone_burger_icon_canvas_right . $phone_burger_icon_js_right;
 	}
 	else
 	{
-		$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
+		$logo =
+			$phone_burger_icon_canvas_left . $phone_burger_icon_js_left .
+			'<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>' .
+			$phone_burger_icon_canvas_right . $phone_burger_icon_js_right;
 	}
 	$sitedescription = $this->params->get('sitedescriptionDesktop');
 	$fluidContainer = $params->get('fluidContainerDesktop');
@@ -255,7 +287,7 @@ $jqm_data_role_content = '';
 $jqm_data_role_footer = '';
 $jqm_data_theme_attribute = '';
 
-if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+if ( $jmwsIdMyGadget->usingJQueryMobile )
 {
 	$jqm_data_role_page = 'data-role="page"';
 	$jqm_data_role_header = 'data-role="header"';
@@ -334,20 +366,19 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	. ($itemid ? ' itemid-' . $itemid : '')
 	. ($fluidContainer ? ' fluid' : '');
 ?>">
-
+	<?php
+	  if ( $jmwsIdMyGadget->usingJQueryMobile )
+	  {
+		 print '<div ' . $jqm_data_role_page . '>';
+	  }
+	?>
 	<!-- Body -->
-<?php
-  if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
-  {
-    print '<div ' . $jqm_data_role_page . '>';
-  }
-?>
 	<div class="body">
 		<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
 			<!-- Header -->
 			<header class="header" role="banner"
 				<?php echo $jqm_data_role_header . ' ' . $jqm_data_theme_attribute ?> >
-				<?php if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE ) : ?>
+				<?php if ( $jmwsIdMyGadget->usingJQueryMobile ) : ?>
 					<div>
 						<jdoc:include type="modules" name="phone-header-nav" style="none" />
 					</div>
@@ -400,7 +431,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 	</div> <!-- .body -->
 	<!-- Footer -->
 	<?php
-		if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+		if ( $jmwsIdMyGadget->usingJQueryMobile )
 		{
 			$footerAttributes = $jqm_data_role_footer . ' ' . $jqm_data_theme_attribute;
 			if ( $this->countModules('phone-footer-nav') )
@@ -414,7 +445,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 		}
 	?>
 	<footer <?php echo $footerAttributes; ?> >
-		<?php if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE ) : ?>
+		<?php if ( $jmwsIdMyGadget->usingJQueryMobile ) : ?>
 			<jdoc:include type="modules" name="footer" style="none" />
 			<jdoc:include type="modules" name="phone-footer-nav" style="none" />
 		<?php else : ?>
@@ -447,7 +478,7 @@ if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE 
 				'error'
 			);
 		}
-		if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+		if ( $jmwsIdMyGadget->usingJQueryMobile )
 		{
 			print '</div> <!-- ' . $jqm_data_role_page . ' -->';
 		}
