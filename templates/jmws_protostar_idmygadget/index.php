@@ -173,7 +173,7 @@ if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft )
 			'phoneBurgerIconLeftOptions.lineSize = "' .$this->params->get('phoneBurgerMenuLeftLineSize') . '";' .
 		'</script>';
 }
-if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft )
+if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceRight )
 {
 	$phone_burger_icon_canvas_right =
 		'<a href="#phone-burger-menu-right" class="pull-right" data-rel="dialog">' .
