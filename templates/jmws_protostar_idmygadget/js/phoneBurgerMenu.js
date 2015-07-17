@@ -15,7 +15,6 @@ var phoneBurgerMenu = {};
 		phoneBurgerMenu.drawPhoneBurgerMenuIcons();
 	})
 })(jQuery);
-
 /**
  * Driver function to draw zero, one, or both menu icons, as appropriate
  * @returns {undefined}
@@ -25,10 +24,12 @@ phoneBurgerMenu.drawPhoneBurgerMenuIcons = function () {
 	phoneBurgerMenu.rightElement = document.getElementById( 'phone-burger-icon-right' );
 
 	if ( typeof phoneBurgerIconLeftOptions !== 'undefined' ) {     // options are set in the admin console
-		phoneBurgerMenu.drawPhoneBurgerMenuIcon( phoneBurgerMenu.leftElement, phoneBurgerIconLeftOptions );
+		phoneBurgerMenu.drawPhoneBurgerMenuIcon(
+			phoneBurgerMenu.leftElement, phoneBurgerIconLeftOptions );
 	}
 	if ( typeof phoneBurgerIconRightOptions !== 'undefined' ) {     // options are set in the admin console
-		phoneBurgerMenu.drawPhoneBurgerMenuIcon( phoneBurgerMenu.rightElement, phoneBurgerIconRightOptions );
+		phoneBurgerMenu.drawPhoneBurgerMenuIcon(
+			phoneBurgerMenu.rightElement, phoneBurgerIconRightOptions );
 	}
 };
 
@@ -38,12 +39,13 @@ phoneBurgerMenu.drawPhoneBurgerMenuIcons = function () {
  * @param {type} phoneBurgerIconOptions
  * @returns {undefined}
  */
-phoneBurgerMenu.drawPhoneBurgerMenuIcon = function ( canvasElement, phoneBurgerIconOptions ) {
+phoneBurgerMenu.drawPhoneBurgerMenuIcon = function (canvasElement, phoneBurgerIconOptions ) {
 	if ( canvasElement === null ) {
 		console.log( 'phoneBurgerMenu.drawThinRoundedPhoneBurgerMenu error: passed-in canvasElement is null!' );
 		return;
 	}
 
+	var context = canvasElement.getContext( '2d' );
 	phoneBurgerMenu.setPhoneBurgerIconDimensions( canvasElement, phoneBurgerIconOptions );
 	var leftMargin = phoneBurgerMenu.leftMargin;
 	var topMargin = phoneBurgerMenu.topMargin;
@@ -60,7 +62,6 @@ phoneBurgerMenu.drawPhoneBurgerMenuIcon = function ( canvasElement, phoneBurgerI
 	console.log( 'FINAL, barWidth: ' + barWidth );
 	console.log( 'FINAL, gapHeight: ' + gapHeight );
 
-	var context = canvasElement.getContext( '2d' );
 	context.save();
 	context.beginPath();
 	context.strokeStyle = phoneBurgerIconOptions.color;
