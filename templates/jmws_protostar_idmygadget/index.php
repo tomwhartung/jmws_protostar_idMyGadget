@@ -90,7 +90,7 @@ $jmwsIdMyGadget->usingJQueryMobile = FALSE;
 $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft = FALSE;
 $jmwsIdMyGadget->phoneBurgerIconThisDeviceRight = FALSE;
 
-if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+if ( $jmwsIdMyGadget->getGadgetString() === $jmwsIdMyGadget::GADGET_STRING_PHONE )
 {
 	$jmwsIdMyGadget->usingJQueryMobile = TRUE;    // always use it on phones
 	if ( $this->countModules('phone-burger-menu-left') )
@@ -164,7 +164,7 @@ $phoneBurgerIconLeft->fileName = '';      // used for hack needed for phones
 $phoneBurgerIconLeft->useImage = FALSE;
 if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft )
 {
-	if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+	if ( $jmwsIdMyGadget->getGadgetString() === $jmwsIdMyGadget::GADGET_STRING_PHONE )
 	{
 		$phoneBurgerIconLeft->fileName = $this->template . '/images/phoneBurgerMenuIconLeft.jpg';
 		if ( file_exists(JPATH_THEMES . DS . $phoneBurgerIconLeft->fileName) )
@@ -206,7 +206,7 @@ $phoneBurgerIconRight->fileName = '';      // used for hack needed for phones
 $phoneBurgerIconRight->useImage = FALSE;
 if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceRight )
 {
-	if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+	if ( $jmwsIdMyGadget->getGadgetString() === $jmwsIdMyGadget::GADGET_STRING_PHONE )
 	{
 		$phoneBurgerIconRight->fileName = $this->template . '/images/phoneBurgerMenuIconRight.jpg';
 		if ( file_exists(JPATH_THEMES . DS . $phoneBurgerIconRight->fileName) )
@@ -246,7 +246,7 @@ if ( $jmwsIdMyGadget->phoneBurgerIconThisDeviceRight )
 // For example: the logo file or site title param, etc.
 //
 $logo = '';
-if ( $jmwsIdMyGadget->getGadgetString() === JmwsIdMyGadget::GADGET_STRING_PHONE )
+if ( $jmwsIdMyGadget->getGadgetString() === $jmwsIdMyGadget::GADGET_STRING_PHONE )
 {
 	if ($this->params->get('logoFilePhone'))
 	{
