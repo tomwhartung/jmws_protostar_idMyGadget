@@ -13,10 +13,10 @@ Fret not, however!  You can accomplish much of this by running one or more "git 
 
 For information on how to install this required code, see the jmws_idMyGadget_for_joomla README.md file.
 
-### Optional but Recommended: jmws_mod_menu_idMyGadget
+### Highly Recommended: jmws_mod_menu_idMyGadget
 For best results, install the jmws_mod_menu_idMyGadget module.
 
-I believe this is required for the hamburger (aka "PhoneBurger") menu to work, but it has been awhile since I set all that up, and it's pretty complicated, so just install it to be safe.
+This is required for the hamburger (aka "PhoneBurger") menu to work, and your joomla site will probably whitescreen if you try to create a Hamburger Menu and this module is not present.
 
 ## Status:
 The initial version is pretty much complete, with the following exceptions:
@@ -78,9 +78,24 @@ This template supports the creation and placement of hamburger menus on one or b
 
 To make this work, you need to define an appropriate joomla menu and assign it to one of the new positions **phone-burger-menu-left** or **phone-burger-menu-right**.  Use the options on this tab if you define a menu and put it in one of these positions.
 
+This template uses the jQuery Mobile JavaScript Library to display a mobile-friendly pop-up menu.  This may not be the best look, feel, and behavior on desktop browsers!
+
 This template uses the HTML5 canvas element to draw the hamburger navigation icons.  Not all devices fully support using this functionality in this context.
 
-For up-to-date information about compatibility with respect to this functionality, see [joomoowebsites.com](http://joomoowebsites.com)
+Placing one or more image files in the `templates/jmws_protostar_idmygadget/images/idMyGadget` directory causes this template to use the file instead of drawing the icons.  This can be a good workaround for devices that do not support the HTML5 canvas in this context.  These images must be named as the following table describes.
+
+File Name | Position | Device
+----------|----------|-------
+phoneBurgerMenuIconLeftPhone | Left | Phone
+phoneBurgerMenuIconRightPhone | Right | Phone
+phoneBurgerMenuIconLeftTablet | Left | Tablet
+phoneBurgerMenuIconRightTablet | Right | Tablet
+phoneBurgerMenuIconLeftDesktop | Left | Desktop
+phoneBurgerMenuIconRightDesktop | Right | Desktop
+
+**Note that this template scales the image to the size set in the options (Left Hamburger Menu Size or Right Hamburger Menu Size, as approprate).**
+
+For up-to-date information about compatibility with respect to all of this functionality, see the latest articles on [joomoowebsites.com](http://joomoowebsites.com).
 
 Clicking on the Hamburger Nav tab reveals the following options unique to this template:
 
