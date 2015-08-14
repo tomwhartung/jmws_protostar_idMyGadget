@@ -1,7 +1,10 @@
 # jmws_protostar_idMyGadget
 This repo integrates the default joomla template protostar with idMyGadget (like jmws_protostar_idMyGadget). 
 
-## This Template Requires jmws_idMyGadget_for_joomla
+## Dependencies
+To function properly, this code requires installation of code in other reqpos.
+
+### Required: jmws_idMyGadget_for_joomla
 For this template to work properly, the jmws_idMyGadget_for_joomla must be installed.
 
 Note that although jmws_idMyGadget_for_joomla comes with a very simple device detector (detect_mobile_browsers) installed "out of the box," it works best when you add one or more of the more sophisticated third-party device detection tools.
@@ -9,6 +12,11 @@ Note that although jmws_idMyGadget_for_joomla comes with a very simple device de
 Fret not, however!  You can accomplish much of this by running one or more "git clone" commands.
 
 For information on how to install this required code, see the jmws_idMyGadget_for_joomla README.md file.
+
+### Optional but Recommended: jmws_mod_menu_idMyGadget
+For best results, install the jmws_mod_menu_idMyGadget module.
+
+I believe this is required for the hamburger (aka "PhoneBurger") menu to work, but it has been awhile since I set all that up, and it's pretty complicated, so just install it to be safe.
 
 ## Status:
 The initial version is pretty much complete, with the following exceptions:
@@ -35,13 +43,67 @@ At some point I plan to post screen shots of these options to [joomoowebsites.co
 In the meantime, this section contains a list.
 
 #### New tab: IdMyGadget
-* 
+Clicking on the IdMyGadget tab reveals the following options unique to this template:
+
+* New: Device Detector
+  * Allows quickly switching between third-party device detectors
+  * Note that each of these is **released under a different license** and has massively different capabilities, but that the IdMyGadget Adapter API makes them "look the same" to joomla
+  * Note that only Detect Mobile Browsers works "out of the box," and it does not detect tablets
+  * Mobile Detect requires installation from github, for more information see the (IdMyGadget README.md for Mobile Detect)[http://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/mobile_detect/README.md]
+  * Tera Wurfl requires installation from source forge and is dependent on a database. For more information see the (IdMyGadget README.md for Tera Wurfl)[https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/tera_wurfl/README.md]
+
+##### Site header params - Phones
+
+* Logo (Phone) - Replaces Admin -> Logo in protostar for phones
+* Site Title (Phone) - Replaces Admin -> Site Title in protostar for phones
+* Tag Line (Phone) - Replaces Admin -> Tag Line in protostar for phones
+* Fluid Layout (Phone) - Replaces Admin -> Fluid Layout in protostar for phones
+
+##### Site header params - Tablets
+
+* Logo (tablet) - Replaces Admin -> Logo in protostar for tablets
+* Site Title (tablet) - Replaces Admin -> Site Title in protostar for tablets
+* Tag Line (tablet) - Replaces Admin -> Tag Line in protostar for tablets
+* Fluid Layout (tablet) - Replaces Admin -> Fluid Layout in protostar for tablets
+
+##### Site header params - Desktop Browsers
+
+* Logo (Desktop) - Replaces Admin -> Logo in protostar for desktop browsers
+* Site Title (Desktop) - Replaces Admin -> Site Title in protostar for desktop browsers
+* Tag Line (Desktop) - Replaces Admin -> Tag Line in protostar for desktop browsers
+* Fluid Layout (Desktop) - Replaces Admin -> Fluid Layout in protostar for desktop browsers
 
 #### New tab: Hamburger Nav
-* 
+This template supports the creation and placement of hamburger menus on one or both sides of the site header.
+
+To make this work, you need to define an appropriate joomla menu and assign it to one of the new positions **phone-burger-menu-left** or **phone-burger-menu-right**.  Use the options on this tab if you define a menu and put it in one of these positions.
+
+This template uses the HTML5 canvas element to draw the hamburger navigation icons.  Not all devices fully support using this functionality in this context.
+
+For up-to-date information about compatibility with respect to this functionality, see [joomoowebsites.com](http://joomoowebsites.com)
+
+Clicking on the Hamburger Nav tab reveals the following options unique to this template:
+
+* Hamburger Menu, Left Side
+  * Show on tablets - menus placed in the **phone-burger-menu-left** position always appear on phones, pick yes to have this also display on tablets
+  * Show on desktops - menus placed in the **phone-burger-menu-left** position always appear on phones, pick yes to have this also display on desktops
+  * Left Hamburger Menu Size - choose one of the available values (in pixels)
+  * Left Hamburger Menu Color - use the color picker or type in a hexadecimal RGB value
+  * Left Hamburger Line Cap - select round, square, or butt
+  * Left Hamburger Line Size - select normal, fat, or thin
+
+* Hamburger Menu, Right Side
+  * Show on tablets - menus placed in the **phone-burger-menu-right** position always appear on phones, pick yes to have this also display on tablets
+  * Show on desktops - menus placed in the **phone-burger-menu-right** position always appear on phones, pick yes to have this also display on desktops
+  * Right Hamburger Menu Size - choose one of the available values (in pixels)
+  * Right Hamburger Menu Color - use the color picker or type in a hexadecimal RGB value
+  * Right Hamburger Line Cap - select round, square, or butt
+  * Right Hamburger Line Size - select normal, fat, or thin
 
 #### New tab: Phone Nav
-* 
+Clicking on the Phone Nav tab reveals the following options unique to this template:
+
+* Theme for Nav on Phones - value is passed to jQuery Mobile, which has customizable themes (but not many "out of the box")
 
 ### Changes to Template Positions
 
