@@ -453,9 +453,6 @@ if ( $jmwsIdMyGadget->usingJQueryMobile )
 				</p>
 			</div> <!-- .container or .container-fluid -->
 		<?php endif; ?>
-		<p>$jmwsIdMyGadget->isPhone(): <?php echo $jmwsIdMyGadget->isPhone(); ?>
-		<p>$jmwsIdMyGadget->isTablet(): <?php echo $jmwsIdMyGadget->isTablet(); ?>
-		<p>$jmwsIdMyGadget->isDesktop(): <?php echo $jmwsIdMyGadget->isDesktop(); ?>
 	</footer>
 	<jdoc:include type="modules" name="debug" style="none" />
 	<?php
