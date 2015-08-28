@@ -74,14 +74,6 @@
 				<field name="logoFilePhone" class="" type="media" default=""
 					label="TPL_PROTOSTAR_LOGO_FILE_PHONE_LABEL"
 					description="TPL_PROTOSTAR_LOGO_FILE_PHONE_DESC" />
-				<field name="sitetitlePhone"  type="text" default=""
-					label="TPL_PROTOSTAR_SITETITLE_PHONE_LABEL"
-					description="TPL_PROTOSTAR_SITETITLE_PHONE_DESC"
-					filter="string" />
-				<field name="sitedescriptionPhone"  type="text" default=""
-					label="TPL_PROTOSTAR_SITEDESCRIPTION_PHONE_LABEL"
-					description="TPL_PROTOSTAR_SITEDESCRIPTION_PHONE_DESC"
-					filter="string" />
 				<field name="fluidContainerPhone"
 					type="radio"
 					class="btn-group btn-group-yesno"
@@ -91,20 +83,20 @@
 					<option value="1">TPL_PROTOSTAR_FLUID</option>
 					<option value="0">TPL_PROTOSTAR_STATIC</option>
 				</field>
+				<field name="sitetitlePhone"  type="text" default=""
+					label="TPL_PROTOSTAR_SITETITLE_PHONE_LABEL"
+					description="TPL_PROTOSTAR_SITETITLE_PHONE_DESC"
+					filter="string" />
+				<field name="sitedescriptionPhone"  type="text" default=""
+					label="TPL_PROTOSTAR_SITEDESCRIPTION_PHONE_LABEL"
+					description="TPL_PROTOSTAR_SITEDESCRIPTION_PHONE_DESC"
+					filter="string" />
 
 				<field type="spacer" name="spacerTablet" class="text"
 					label="TPL_PROTOSTAR_HEADER_PARAMS_TABLET" />
 				<field name="logoFileTablet" class="" type="media" default=""
 					label="TPL_PROTOSTAR_LOGO_FILE_TABLET_LABEL"
 					description="TPL_PROTOSTAR_LOGO_FILE_TABLET_DESC" />
-				<field name="sitetitleTablet"  type="text" default=""
-					label="TPL_PROTOSTAR_SITETITLE_TABLET_LABEL"
-					description="TPL_PROTOSTAR_SITETITLE_TABLET_DESC"
-					filter="string" />
-				<field name="sitedescriptionTablet"  type="text" default=""
-					label="TPL_PROTOSTAR_SITEDESCRIPTION_TABLET_LABEL"
-					description="TPL_PROTOSTAR_SITEDESCRIPTION_TABLET_DESC"
-					filter="string" />
 				<field name="fluidContainerTablet"
 					type="radio"
 					class="btn-group btn-group-yesno"
@@ -114,20 +106,20 @@
 					<option value="1">TPL_PROTOSTAR_FLUID</option>
 					<option value="0">TPL_PROTOSTAR_STATIC</option>
 				</field>
+				<field name="sitetitleTablet"  type="text" default=""
+					label="TPL_PROTOSTAR_SITETITLE_TABLET_LABEL"
+					description="TPL_PROTOSTAR_SITETITLE_TABLET_DESC"
+					filter="string" />
+				<field name="sitedescriptionTablet"  type="text" default=""
+					label="TPL_PROTOSTAR_SITEDESCRIPTION_TABLET_LABEL"
+					description="TPL_PROTOSTAR_SITEDESCRIPTION_TABLET_DESC"
+					filter="string" />
 
 				<field type="spacer" name="spacerDesktop" class="text"
 					label="TPL_PROTOSTAR_HEADER_PARAMS_DESKTOP" />
 				<field name="logoFileDesktop" class="" type="media" default=""
 					label="TPL_PROTOSTAR_LOGO_FILE_DESKTOP_LABEL"
 					description="TPL_PROTOSTAR_LOGO_FILE_DESKTOP_DESC" />
-				<field name="sitetitleDesktop"  type="text" default=""
-					label="TPL_PROTOSTAR_SITETITLE_DESKTOP_LABEL"
-					description="TPL_PROTOSTAR_SITETITLE_DESKTOP_DESC"
-					filter="string" />
-				<field name="sitedescriptionDesktop"  type="text" default=""
-					label="TPL_PROTOSTAR_SITEDESCRIPTION_DESKTOP_LABEL"
-					description="TPL_PROTOSTAR_SITEDESCRIPTION_DESKTOP_DESC"
-					filter="string" />
 				<field name="fluidContainerDesktop"
 					type="radio"
 					class="btn-group btn-group-yesno"
@@ -137,6 +129,14 @@
 					<option value="1">TPL_PROTOSTAR_FLUID</option>
 					<option value="0">TPL_PROTOSTAR_STATIC</option>
 				</field>
+				<field name="sitetitleDesktop"  type="text" default=""
+					label="TPL_PROTOSTAR_SITETITLE_DESKTOP_LABEL"
+					description="TPL_PROTOSTAR_SITETITLE_DESKTOP_DESC"
+					filter="string" />
+				<field name="sitedescriptionDesktop"  type="text" default=""
+					label="TPL_PROTOSTAR_SITEDESCRIPTION_DESKTOP_LABEL"
+					description="TPL_PROTOSTAR_SITEDESCRIPTION_DESKTOP_DESC"
+					filter="string" />
 			</fieldset>
 
 			<fieldset name="hamburgernav">
