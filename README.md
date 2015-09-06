@@ -4,6 +4,9 @@ This repo integrates the default joomla template protostar with idMyGadget (like
 ## Dependencies
 To function properly, this code requires installation of code in other reqpos.
 
+### TODO:
+Look into using Joomla Composer to manage these dependencies.
+
 ### Required: jmws_idMyGadget_for_joomla
 For this template to work properly, the jmws_idMyGadget_for_joomla must be installed.
 
@@ -16,7 +19,7 @@ For information on how to install this required code, see the jmws_idMyGadget_fo
 ### Highly Recommended: jmws_mod_menu_idMyGadget
 For best results, install the jmws_mod_menu_idMyGadget module.
 
-This is required for the hamburger (aka "PhoneBurger") menu to work, and your joomla site will probably whitescreen if you try to create a Hamburger Menu and this module is not present.
+This is required for the hamburger (aka. "PhoneBurger") and phone header and footer menus to work. Your joomla site may even whitescreen if you try to create a Hamburger Menu and this module is not present.
 
 ## Status:
 The initial version is pretty much complete, with the following exceptions:
