@@ -367,12 +367,10 @@ if ( $jmwsIdMyGadget->usingJQueryMobile )
 			<!-- Header -->
 			<header class="header" role="banner"
 				<?php echo $jqm_data_role_header . ' ' . $jqm_data_theme_attribute ?> >
-				<?php if ( $jmwsIdMyGadget->usingJQueryMobile ) : ?> <!-- CAN I DELETE THIS?????????????????????????? -->
-					<?php if ( $jmwsIdMyGadget->phoneHeaderNavThisDevice ) : ?>
-						<div>
-							<jdoc:include type="modules" name="phone-header-nav" style="none" />
-						</div>
-					<?php endif; ?>
+				<?php if ( $jmwsIdMyGadget->phoneHeaderNavThisDevice ) : ?>
+					<div>
+						<jdoc:include type="modules" name="phone-header-nav" style="none" />
+					</div>
 				<?php endif; ?>
 				<div class="header-inner clearfix">
 					<a class="brand pull-left" href="<?php echo $this->baseurl; ?>/">
