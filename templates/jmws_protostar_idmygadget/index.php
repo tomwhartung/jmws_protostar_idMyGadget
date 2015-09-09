@@ -86,7 +86,24 @@ else
 	$jmwsIdMyGadget = new JmwsIdMyGadgetJoomla( 'detect_mobile_browsers' );
 }
 //
-// The phone burger menu was originally intended for phones only, hence the name.
+// The jQuery Mobile phone-nav positions are only available on phones,
+//   because those app-like menus do not look good on tablets and desktops
+//
+$jmwsIdMyGadget->phoneHeaderNavThisDevice  = FALSE;
+$jmwsIdMyGadget->phoneFooterNavThisDevice  = FALSE;
+if ( $jmwsIdMyGadget->isPhone() )
+{
+	if ( $this->countModules('phone-header-nav') )
+	{
+		$jmwsIdMyGadget->phoneHeaderNavThisDevice = TRUE;
+	}
+	if ( $this->countModules('phone-footer-nav') )
+	{
+		$jmwsIdMyGadget->phoneFooterNavThisDevice = TRUE;
+	}
+}
+//
+//// The phone burger menu was originally intended for phones only, hence the name.
 // Now we have options so that, if desired, we can use it on tablets and desktops as well.
 //
 $jmwsIdMyGadget->usingJQueryMobile = FALSE;
@@ -266,8 +283,8 @@ if ( $jmwsIdMyGadget->usingJQueryMobile )
 	$jqm_data_role_content = 'data-role="content"';
 	$jqm_data_role_footer = 'data-role="footer"';
 
-	if ( $this->countModules('phone-header-nav') ||
-	     $this->countModules('phone-footer-nav')   )
+	if ( $jmwsIdMyGadget->phoneHeaderNavThisDevice ||
+	     $jmwsIdMyGadget->phoneFooterNavThisDevice   )
 	{
 		$jqm_data_theme_template = $this->params->get('jqm_data_theme');
 		if ( $jqm_data_theme_template == 'none' )
@@ -350,10 +367,12 @@ if ( $jmwsIdMyGadget->usingJQueryMobile )
 			<!-- Header -->
 			<header class="header" role="banner"
 				<?php echo $jqm_data_role_header . ' ' . $jqm_data_theme_attribute ?> >
-				<?php if ( $jmwsIdMyGadget->usingJQueryMobile ) : ?>
-					<div>
-						<jdoc:include type="modules" name="phone-header-nav" style="none" />
-					</div>
+				<?php if ( $jmwsIdMyGadget->usingJQueryMobile ) : ?> <!-- CAN I DELETE THIS?????????????????????????? -->
+					<?php if ( $jmwsIdMyGadget->phoneHeaderNavThisDevice ) : ?>
+						<div>
+							<jdoc:include type="modules" name="phone-header-nav" style="none" />
+						</div>
+					<?php endif; ?>
 				<?php endif; ?>
 				<div class="header-inner clearfix">
 					<a class="brand pull-left" href="<?php echo $this->baseurl; ?>/">
@@ -425,7 +444,7 @@ if ( $jmwsIdMyGadget->usingJQueryMobile )
 		if ( $jmwsIdMyGadget->usingJQueryMobile )
 		{
 			$footerAttributes = $jqm_data_role_footer . ' ' . $jqm_data_theme_attribute;
-			if ( $this->countModules('phone-footer-nav') )
+			if ( $jmwsIdMyGadget->phoneFooterNavThisDevice )
 			{
 				$footerAttributes .= 'class="ui-bar" data-position="fixed"';
 			}
@@ -438,7 +457,9 @@ if ( $jmwsIdMyGadget->usingJQueryMobile )
 	<footer <?php echo $footerAttributes; ?> >
 		<?php if ( $jmwsIdMyGadget->usingJQueryMobile ) : ?>
 			<jdoc:include type="modules" name="footer" style="none" />
-			<jdoc:include type="modules" name="phone-footer-nav" style="none" />
+			<?php if ( $jmwsIdMyGadget->phoneFooterNavThisDevice ) : ?>
+				<jdoc:include type="modules" name="phone-footer-nav" style="none" />
+			<?php endif; ?>
 		<?php else : ?>
 			<div class="container<?php echo ($fluidContainer ? '-fluid' : ''); ?>">
 				<hr />
