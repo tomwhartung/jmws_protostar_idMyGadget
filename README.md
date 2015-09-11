@@ -22,16 +22,31 @@ For best results, install the jmws_mod_menu_idMyGadget module.
 This is required for the hamburger (aka. "PhoneBurger") and phone header and footer menus to work. Your joomla site may even whitescreen if you try to create a Hamburger Menu and this module is not present.
 
 ## Status:
-The initial version of this template is pretty much complete, but integration testing has been minimal.
-For a project like this, the task of "integration testing" can be extensive and problematic.
+The initial version of this template is complete, but thorough integration testing has been minimal, so there may be some rough edges.
 
-Documentation suffers for similar reasons, and carries the additional burden that any documentation only increases the technical debt incurred when changes are made to the underlying code or that written on top of it.
+This project could serve as a good starting point for someone who wants to use Device Detection in the protostar template.
+
+### Demo Article
+The (Protostar IdMyGadget Demo)[http://joomoowebsites.com/index.php/demos/demos-joomla/joomla-templates/demo-protostar-idmygadget] article gives an example of how this template looks.
+
+Note that the configuration for that demo is unpolished and some fiddling with the configuration and a little CSS could go a long way in making it look much nicer.
+
+### Future Work
+The goal of this project is to integrate IdMYGadget with the protostar default Joomla template, and keep changes to a minimum.
+Right now that goal is accomplished, so additional work on this is on hold for now.
+
+I am currently using a similar template ([jmws_protostar_tomh_idMyGadget](https://github.com/tomwhartung/jmws_protostar_tomh_idMyGadget)) on my site [JooMooWebSites.Com](http://joomoowebsites.com/), and have moved on to doing similar work in WordPress and Drupal.
+
+Thus there is no real reason for me to continue work on this, without a new goal in mind, or some other compelling reason to start using this template rather than [jmws_protostar_tomh_idMyGadget](https://github.com/tomwhartung/jmws_protostar_tomh_idMyGadget), which has a lot more options.
+
+#### Self-Promotion Alert:
+Of course I'd certainly be happy to do additional work on this, for a small price!  ;-)
 
 ## Installation:
 
 Installation of all jmws_* joomla extensions is the same.
-
 For details, see the following documents in the [Jmws Accoutrements Repo on github](https://github.com/tomwhartung/jmws_accoutrements/):
+
 * [Installing Jmws Joomla Extensions document](https://github.com/tomwhartung/jmws_accoutrements/blob/master/doc/joomla/install.md)
 * [Jmws Github Strategy document](https://github.com/tomwhartung/jmws_accoutrements/blob/master/doc/devops/cms_github_strategy.md)
 
