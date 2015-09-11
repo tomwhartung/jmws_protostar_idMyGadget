@@ -22,36 +22,45 @@ For best results, install the jmws_mod_menu_idMyGadget module.
 This is required for the hamburger (aka. "PhoneBurger") and phone header and footer menus to work. Your joomla site may even whitescreen if you try to create a Hamburger Menu and this module is not present.
 
 ## Status:
-The initial version is pretty much complete, with the following exceptions:
-
-* Integration testing has been minimal.
-* Documentation is currently in progress, so at any given time it may be minimal or even lacking completely.
-
+The initial version of this template is pretty much complete, but integration testing has been minimal.
 For a project like this, the task of "integration testing" can be extensive and problematic.
 
-Moreover, because this is an experimental project, integration testing hardly seems worthwhile, because I do not know how many people, or even if any at all, might want to use it, much less what they might want to use it for.
-
 Documentation suffers for similar reasons, and carries the additional burden that any documentation only increases the technical debt incurred when changes are made to the underlying code or that written on top of it.
+
+## Installation:
+
+Installation of all jmws_* joomla extensions is the same.
+
+For details, see the following documents in the [Jmws Accoutrements Repo on github](https://github.com/tomwhartung/jmws_accoutrements/):
+* [Installing Jmws Joomla Extensions document](https://github.com/tomwhartung/jmws_accoutrements/blob/master/doc/joomla/install.md)
+* [Jmws Github Strategy document](https://github.com/tomwhartung/jmws_accoutrements/blob/master/doc/devops/cms_github_strategy.md)
 
 ## Specific Changes Made to Protostar
 
 ### Integration With IdMyGadget
 This template uses IdMyGadget to determine whether the user is accessing the site on a phone, tablet, or desktop, and changes the output accordingly.
 
-This template adds several options to the joomla administration console that allow users to customize the appearance of their site, especially the header, without the need for additional programming.
+This template adds the following tabs to the joomla administration console for it:
+
+* IdMyGadget
+* Hamburger Nav
+* Phone Nav
+
+These tabs contain options allowing administrators to customize the appearance of their site, especially the header, without the need for additional programming.
 
 ### Additional Admin Console Options
-At some point I plan to post screen shots of these options to [joomoowebsites.com](http://joomoowebsites.com), so you may want to check there for more information.
+The following article walks through the options in these new tabs:
+* (Protostar IdMyGadget Demo)[http://joomoowebsites.com/index.php/demos/demos-joomla/joomla-templates/demo-protostar-idmygadget]
 
-In the meantime, this section contains a list.
+It contains screen shots of each tab and describes and demonstrates these options, and is an excellent supplement to the information in this README.md file.
 
 #### New tab: IdMyGadget
 Clicking on the IdMyGadget tab reveals the following options unique to this template:
 
-* New: Device Detector
+* Device Detector
   * Allows quickly switching between third-party device detectors
   * Note that each of these is **released under a different license** and has massively different capabilities, but that the IdMyGadget Adapter API makes them "look the same" to joomla
-  * Note that only Detect Mobile Browsers works "out of the box," and it does not detect tablets
+  * Note that only the Detect Mobile Browsers detector works "out of the box," and it does not detect tablets
   * Mobile Detect requires installation from github, for more information see the (IdMyGadget README.md for Mobile Detect)[http://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/mobile_detect/README.md]
   * Tera Wurfl requires installation from source forge and is dependent on a database. For more information see the (IdMyGadget README.md for Tera Wurfl)[https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/tera_wurfl/README.md]
 
@@ -128,9 +137,10 @@ Clicking on the Phone Nav tab reveals the following options unique to this templ
 #### position-7
 Modules placed in the protostar template's existing position-7 appear only on desktops.
 
-To make a module appear in position-7 on phones, put it in position-7-phone . 
+* To make a module appear in position-7 on phones only, put it in position-7-phone 
+* To make a module appear in position-7 on tablets only, put it in position-7-tablet 
 
-To make a module appear in position-7 on tablets, put it in position-7-tablet . 
+Note that the protostar Tomh IdMyGadget template includes a position-7-desktop, making it a slightly more comprehesive and consistent implementation of this technique.
 
 #### New Positions
 The following positions appear in this template, but not in protostar:
