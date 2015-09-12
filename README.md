@@ -2,10 +2,9 @@
 This repo integrates the default joomla template protostar with idMyGadget (like jmws_protostar_idMyGadget). 
 
 ## Dependencies
-To function properly, this code requires installation of code in other reqpos.
+To function properly, this code requires installation of code in other repos.
 
-### TODO:
-Look into using Joomla Composer to manage these dependencies.
+**TODO: Look into using Joomla Composer to manage these dependencies.**
 
 ### Required: jmws_idMyGadget_for_joomla
 For this template to work properly, the jmws_idMyGadget_for_joomla must be installed.
@@ -26,20 +25,21 @@ The initial version of this template is complete, but thorough integration testi
 
 This project could serve as a good starting point for someone who wants to use Device Detection in the protostar template.
 
-### Demo Article
-The (Protostar IdMyGadget Demo)[http://joomoowebsites.com/index.php/demos/demos-joomla/joomla-templates/demo-protostar-idmygadget] article gives an example of how this template looks.
+#### Demo Article
+The [Protostar IdMyGadget Demo](http://joomoowebsites.com/index.php/demos/demos-joomla/joomla-templates/demo-protostar-idmygadget) article gives an example of how this template looks.
 
 Note that the configuration for that demo is unpolished and some fiddling with the configuration and a little CSS could go a long way in making it look much nicer.
 
-### Future Work
+#### Future Work
 The goal of this project is to integrate IdMYGadget with the protostar default Joomla template, and keep changes to a minimum.
+
 Right now that goal is accomplished, so additional work on this is on hold for now.
 
 I am currently using a similar template ([jmws_protostar_tomh_idMyGadget](https://github.com/tomwhartung/jmws_protostar_tomh_idMyGadget)) on my site [JooMooWebSites.Com](http://joomoowebsites.com/), and have moved on to doing similar work in WordPress and Drupal.
 
 Thus there is no real reason for me to continue work on this, without a new goal in mind, or some other compelling reason to start using this template rather than [jmws_protostar_tomh_idMyGadget](https://github.com/tomwhartung/jmws_protostar_tomh_idMyGadget), which has a lot more options.
 
-#### Self-Promotion Alert:
+#### Self-Promotion Alert!
 Of course I'd certainly be happy to do additional work on this, for a small price!  ;-)
 
 ## Installation:
@@ -51,6 +51,7 @@ For details, see the following documents in the [Jmws Accoutrements Repo on gith
 * [Jmws Github Strategy document](https://github.com/tomwhartung/jmws_accoutrements/blob/master/doc/devops/cms_github_strategy.md)
 
 ## Specific Changes Made to Protostar
+Integration of IdMyGadget with the template enables the addition of options to the template's administrator's console.
 
 ### Integration With IdMyGadget
 This template uses IdMyGadget to determine whether the user is accessing the site on a phone, tablet, or desktop, and changes the output accordingly.
@@ -64,8 +65,8 @@ This template adds the following tabs to the joomla administration console for i
 These tabs contain options allowing administrators to customize the appearance of their site, especially the header, without the need for additional programming.
 
 ### Additional Admin Console Options
-The following article walks through the options in these new tabs:
-* (Protostar IdMyGadget Demo)[http://joomoowebsites.com/index.php/demos/demos-joomla/joomla-templates/demo-protostar-idmygadget]
+The following article on [JooMooWebSites.Com](http://wwww.joomoowebsites.com) walks through the options in these new tabs:
+* [Protostar IdMyGadget Demo](http://joomoowebsites.com/index.php/demos/demos-joomla/joomla-templates/demo-protostar-idmygadget)
 
 It contains screen shots of each tab and describes and demonstrates these options, and is an excellent supplement to the information in this README.md file.
 
