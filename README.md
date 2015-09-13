@@ -56,7 +56,7 @@ Integration of IdMyGadget with the template enables the addition of options to t
 ### Integration With IdMyGadget
 This template uses IdMyGadget to determine whether the user is accessing the site on a phone, tablet, or desktop, and changes the output accordingly.
 
-This template adds the following tabs to the joomla administration console for it:
+This template adds the following tabs to its configuration options in the joomla administration console:
 
 * IdMyGadget
 * Hamburger Nav
@@ -82,24 +82,24 @@ Clicking on the IdMyGadget tab reveals the following options unique to this temp
 
 ##### Site header params - Phones
 
-* Logo (Phone) - Replaces Admin -> Logo in protostar for phones
-* Site Title (Phone) - Replaces Admin -> Site Title in protostar for phones
-* Tag Line (Phone) - Replaces Admin -> Tag Line in protostar for phones
-* Fluid Layout (Phone) - Replaces Admin -> Fluid Layout in protostar for phones
+* Logo (Phone) - Replaces Advanced -> Logo in protostar for phones
+* Fluid Layout (Phone) - Replaces Advanced -> Fluid Layout in protostar for phones
+* Site Title (Phone) - Replaces Advanced -> Title in protostar for phones
+* Tag Line (Phone) - Replaces Advanced -> Description in protostar for phones
 
 ##### Site header params - Tablets
 
-* Logo (tablet) - Replaces Admin -> Logo in protostar for tablets
-* Site Title (tablet) - Replaces Admin -> Site Title in protostar for tablets
-* Tag Line (tablet) - Replaces Admin -> Tag Line in protostar for tablets
-* Fluid Layout (tablet) - Replaces Admin -> Fluid Layout in protostar for tablets
+* Logo (tablet) - Replaces Advanced -> Logo in protostar for tablets
+* Fluid Layout (tablet) - Replaces Advanced -> Fluid Layout in protostar for tablets
+* Site Title (tablet) - Replaces Advanced -> Title in protostar for tablets
+* Tag Line (tablet) - Replaces Advanced -> Description in protostar for tablets
 
 ##### Site header params - Desktop Browsers
 
-* Logo (Desktop) - Replaces Admin -> Logo in protostar for desktop browsers
-* Site Title (Desktop) - Replaces Admin -> Site Title in protostar for desktop browsers
-* Tag Line (Desktop) - Replaces Admin -> Tag Line in protostar for desktop browsers
-* Fluid Layout (Desktop) - Replaces Admin -> Fluid Layout in protostar for desktop browsers
+* Logo (Desktop) - Replaces Advanced -> Logo in protostar for desktop browsers
+* Fluid Layout (Desktop) - Replaces Advanced -> Fluid Layout in protostar for desktop browsers
+* Site Title (Desktop) - Replaces Advanced -> Title in protostar for desktop browsers
+* Tag Line (Desktop) - Replaces Advanced -> Description in protostar for desktop browsers
 
 #### New tab: Hamburger Nav
 This template supports the creation and placement of hamburger menus on one or both sides of the site header.
