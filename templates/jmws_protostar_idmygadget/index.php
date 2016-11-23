@@ -355,6 +355,7 @@ if ( $jmwsIdMyGadget->usingJQueryMobile )
 	. ($itemid ? ' itemid-' . $itemid : '')
 	. ($fluidContainer ? ' fluid' : '');
 ?>">
+	<?php include_once("google_analytics.php"); ?>
 	<?php
 	  if ( $jmwsIdMyGadget->usingJQueryMobile )
 	  {
